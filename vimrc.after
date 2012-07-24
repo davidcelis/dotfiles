@@ -1,4 +1,4 @@
-colorscheme wombat256
+colorscheme tomorrow-night
 highlight ColorColumn ctermbg=233
 
 set autoindent
@@ -16,6 +16,7 @@ set nowrap
 
 nnoremap <leader>/ :nohlsearch<cr>
 nnoremap <cr> :nohlsearch<cr><cr>
+nnoremap <F3> :NumbersToggle<CR>
 
 augroup myvimrc
   au!
