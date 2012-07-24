@@ -15,6 +15,7 @@ update-local:
 
 ln_options = hfsv
 link:
+	ln -$(ln_options) $(PWD)/gemrc $(HOME)/.gemrc
 	ln -$(ln_options) $(PWD)/gitconfig $(HOME)/.gitconfig
 	ln -$(ln_options) $(PWD)/githelpers $(HOME)/.githelpers
 	ln -$(ln_options) $(PWD)/gitignore $(HOME)/.gitignore
@@ -111,24 +112,24 @@ homebrew_formulae = \
 	browser \
 	brew-gem \
 	clojure \
+	cowsay \
 	ctags \
-	discount \
-	erlang \
+	elasticsearch \
 	figlet \
 	fortune \
-	ghc \
 	gist \
 	git \
 	hub \
 	imagemagick \
-	io \
 	lame \
 	lua \
 	lynx \
+	macvim \
 	memcached \
 	mongodb \
 	mysql \
 	node \
+	postgresql \
 	reattach-to-user-namespace \
 	redis \
 	repl \
@@ -136,6 +137,8 @@ homebrew_formulae = \
 	tmux \
 	tree \
 	varnish \
+	weechat \
+	wget \
 	yajl \
 	zsh
 install-homebrew-formulae:
@@ -150,6 +153,7 @@ clean: uninstall unlink
 uninstall: uninstall-oh-my-zsh uninstall-janus uninstall-rbenv
 
 unlink:
+	unlick $(HOME)/.gemrc
 	unlink $(HOME)/.gitconfig
 	unlink $(HOME)/.gitignore
 	unlink $(HOME)/.irbrc
