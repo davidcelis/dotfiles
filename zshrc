@@ -33,19 +33,11 @@ DISABLE_AUTO_TITLE="true"
 plugins=( \
   brew \
   bundler \
-  # cap \
   gem \
   git \
   github \
   history-substring-search \
-  # node \
-  # npm \
-  # osx \
-  # pow \
-  # rails3 \
-  # rake \
   rbenv \
-  # redis-cli \
   stephencelis \
   terminalapp \
   zsh-syntax-highlighting \
