@@ -10,7 +10,6 @@
 	st = status -s
 	h = "!source ~/.githelpers && show_git_head"
 	l = "!source ~/.githelpers && pretty_git_log"
-	lg = "!source ~/.githelpers && git_log_graph"
 	fixup = "!source ~/.githelpers && fixup"
 	squash = "!source ~/.githelpers && squash"
 	wtf = what-the-hell-just-happened
@@ -25,6 +24,7 @@
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
+	conflictstyle = diff3
 [push]
 	default = matching
 [rebase]
