@@ -1,4 +1,4 @@
-colorscheme tomorrow-night
+colorscheme Tomorrow-Night
 highlight ColorColumn ctermbg=233
 
 set autoindent
