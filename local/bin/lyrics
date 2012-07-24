@@ -1,0 +1,16 @@
+#!/bin/bash
+
+services=(iTunes Rdio Spotify)
+for service in "${services[@]}"; do
+  if ps axco pid,command | grep -v grep | egrep "$service\$" > /dev/null; then
+    state=`osascript -e "tell application \"$service\" to get player state as string"`
+    if [ "$state" = "playing" ] ; then
+      artist_name=`osascript -e"tell application \"$service\" to get artist of current track"`
+      song_title=`osascript -e"tell application \"$service\" to get name of current track"`
+      artist=`echo $artist_name | sed "s/[[:space:]]/%20/g"`
+      title=`echo $song_title | sed "s/[[:space:]]/%20/g"`
+      song=`curl -s "http://makeitpersonal.co/lyrics?artist=$artist&title=$title"`
+      echo -e "Currently playing on $service\n\n$artist_name - $song_title\n$song" | less
+    fi
+  fi
+done
