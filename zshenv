@@ -22,5 +22,3 @@ export VISUAL=$EDITOR
 alias vim=$EDITOR
 
 export JRUBY_OPTS='--1.9'
-
-alias b='bundle exec'
