@@ -24,7 +24,6 @@
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
-	conflictstyle = diff3
 [push]
 	default = matching
 [rebase]
