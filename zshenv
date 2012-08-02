@@ -26,4 +26,4 @@ alias vim=$EDITOR
 export JRUBY_OPTS='--1.9'
 
 # tmuxinator.
-[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
