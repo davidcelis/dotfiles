@@ -135,6 +135,7 @@ homebrew_formulae = \
 	mysql \
 	node \
 	postgresql \
+	python \
 	reattach-to-user-namespace \
 	redis \
 	repl \
