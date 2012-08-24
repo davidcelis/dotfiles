@@ -158,6 +158,7 @@ homebrew_formulae = \
 	node \
 	postgresql \
 	python \
+	readline \
 	reattach-to-user-namespace \
 	redis \
 	repl \
@@ -171,6 +172,9 @@ homebrew_formulae = \
 	zsh
 install-homebrew-formulae:
 	brew install $(homebrew_formulae)
+link-homebrew-formulae:
+	brew link readline
+
 install-homebrew-gems: install-homebrew-formulae
 	brew gem testrbl
 
@@ -183,6 +187,15 @@ npm_packages = \
 	supervisor
 install-npm-packages:
 	npm install -g $(npm_packages)
+
+
+# pip
+
+pip_packages = \
+	Pygments \
+	mercurial
+install-pip-packages:
+	pip install $(pip_packages)
 
 
 # Uninstall
