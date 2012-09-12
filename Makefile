@@ -42,6 +42,8 @@ link: link-oh-my-zsh link-janus
 	ln -$(ln_options) $(PWD)/gitignore $(HOME)/.gitignore
 	ln -$(ln_options) $(PWD)/irbrc $(HOME)/.irbrc
 	ln -$(ln_options) $(PWD)/jshintrc $(HOME)/.jshintrc
+	ln -$(ln_options) $(PWD)/powconfig $(HOME)/.powconfig
+	ln -$(ln_options) $(PWD)/rspec $(HOME)/.rspec
 	ln -$(ln_options) $(PWD)/screenrc $(HOME)/.screenrc
 	ln -$(ln_options) $(PWD)/tmux.conf $(HOME)/.tmux.conf
 	ln -$(ln_options) $(PWD)/vimrc.after $(HOME)/.vimrc.after
@@ -153,6 +155,7 @@ homebrew_formulae = \
 	lynx \
 	macvim \
 	memcached \
+	mercurial \
 	mongodb \
 	mysql \
 	node \
@@ -166,8 +169,8 @@ homebrew_formulae = \
 	tmux \
 	tree \
 	varnish \
-	weechat \
 	wget \
+	watch \
 	yajl \
 	zsh
 install-homebrew-formulae:
@@ -193,7 +196,7 @@ install-npm-packages:
 
 pip_packages = \
 	Pygments \
-	mercurial
+	glances
 install-pip-packages:
 	pip install $(pip_packages)
 
