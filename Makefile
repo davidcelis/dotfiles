@@ -143,7 +143,10 @@ homebrew_formulae = \
 	clojure \
 	cowsay \
 	ctags \
+	daemonize \
+	discount \
 	elasticsearch \
+	erlang \
 	figlet \
 	fortune \
 	gist \

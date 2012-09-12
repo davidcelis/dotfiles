@@ -32,27 +32,27 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=( \
   brew \
-  bundler \
   gem \
   git \
   github \
   history-substring-search \
-  # node \
-  # npm \
-  # osx \
-  # pow \
-  # rails3 \
-  # rake \
-  # rbenv \
-  # redis-cli \
+  redis-cli \
   stephencelis \
   terminalapp \
   zsh-syntax-highlighting \
 )
 
-# Faster than the rbenv plugin, but requires manual rehashing.
+# Faster than the rbenv plugin...
+
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init - --no-rehash zsh)"
+
+if command -v daemonize >/dev/null
+then
+  daemonize $HOME/.rbenv/bin/rbenv rehash
+else
+  nohup rbenv rehash >/dev/null 1>&2 &
+fi
 
 source $ZSH/oh-my-zsh.sh
 
