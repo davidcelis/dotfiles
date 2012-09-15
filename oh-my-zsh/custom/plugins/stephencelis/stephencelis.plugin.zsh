@@ -6,7 +6,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 
 # Aliases.
-alias which="builtin which -a"
 alias ssh-add-all="ssh-add ~/.ssh/*id_rsa"
 
 # Quickly toggle your editor with ^Z.
@@ -19,6 +18,12 @@ Code="$HOME/Documents/Code"
 function c { cd $Code; for match in $*; do eval cd "$match*(/,@[1])"; done }
 function _c { _files -W $Code -/ }
 compdef _c c
+
+# pass completion.
+function _pass {
+  compadd $(security dump-keychain | grep '"srvr"' | cut -d '"' -f 4 -)
+}
+compdef _pass pass
 
 # http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
 function _tmux_pane_words {
