@@ -3,8 +3,7 @@
 #
 # pass: A simple CLI wrapper over `security' and the keychain.
 #
-# usage: pass <uri> [<password>]
-#        pass <host>
+# usage: pass <uri>
 #
 # © 2012 Stephen Celis <stephen@stephencelis.com>
 #--
@@ -38,22 +37,29 @@ end
 module Keychain
   module_function
 
-  def save uri, password
+  def save uri, password, username
     uri = URI(uri)
     protocol = uri.scheme == 'https' ? 'htps' : '% 4s' % uri.scheme
     options = %W[
-      -a #{uri.host} -s #{uri.host} -w #{password}
+      -a #{username} -s #{uri.host} -w #{password}
       -r #{protocol} -P #{uri.port} -p #{uri.request_uri}
     ]
     system "security add-internet-password #{options.join ' '}"
   end
 
-  def find host
+  def find host, include_username = false
     uri = URI(host)
     command = "security find-internet-password -gs #{uri.host || uri}"
     Open3.popen3(command) do |stdin, stdout, stderr|
       data = stderr.read.match(/^password: [^"]*"(.+)"$/)
-      data[1] if data
+      if data
+        response = [data[1]]
+        if include_username
+          data = stdout.read.match(/^    "acct"<blob>="(.+)"$/)
+          response << data[1] if data
+        end
+        response.join "\n"
+      end
     end
   end
 end
@@ -63,31 +69,40 @@ Signal.trap 'INT' do
   abort
 end
 
+include_username = false
 options = OptionParser.new do |opts|
   command = File.basename $0
   opts.banner = <<-EOF
 usage: #{command} <uri> [<password>]
        #{command} <host>
   EOF
+  opts.on('-u') { include_username = true }
 end
 options.parse!
 
-def read_password host
+def read_password host, include_username = false
   previous = Pasteboard.paste
-  password = Keychain.find host
+  password = Keychain.find host, include_username
 
   if password.nil?
     warn 'Password not found.'
 
     uri = URI(host)
-    if uri.scheme
-      print 'Enter password: '
-      password = STDIN.noecho { STDIN.gets }
-      if password
-        password.chomp!
-        unless password.empty?
-          write_password host, password
-          return
+    if uri.scheme && STDIN.tty?
+      print 'Enter username: '
+      username = STDIN.gets
+      if username
+        username.chomp!
+        unless username.empty?
+          print 'Enter password: '
+          password = STDIN.noecho { STDIN.gets }
+          if password
+            password.chomp!
+            unless password.empty?
+              write_password host, password, username
+              return
+            end
+          end
         end
       end
     end
@@ -95,29 +110,34 @@ def read_password host
     abort
   end
 
+  unless STDIN.tty?
+    print password
+    exit
+  end
+
   Pasteboard.copy password
   at_exit { Pasteboard.copy previous if Pasteboard.paste == password }
 
-  print 'Password available in clipboard for 10 seconds'
-  10.times do
+  seconds = 5
+  print "Password available in clipboard for #{seconds} seconds"
+  seconds.times do
     sleep 1
     print '.'
   end
   puts
 end
 
-def write_password uri, password
-  uri, password = ARGV
-  Keychain.save uri, password
+def write_password uri, password, username
+  Keychain.save uri, password, username
 end
 
 case ARGV.length
 when 2..3
-  uri, password = ARGV
-  write_password uri, password
+  uri, password, username = ARGV
+  write_password uri, password, username
 when 1
   host, = ARGV
-  read_password host
+  read_password host, include_username
 else
   puts options
   abort
