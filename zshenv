@@ -17,7 +17,7 @@ export VISUAL=$EDITOR
 alias vim=$EDITOR
 
 # jruby 1.9 mode.
-export JRUBY_OPTS='--1.9'
+export JRUBY_OPTS='--1.9 -Xcext.enabled=true'
 
 # tmuxinator.
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
