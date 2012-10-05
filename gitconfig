@@ -12,7 +12,6 @@
 	l = "!source ~/.githelpers && pretty_git_log"
 	fixup = "!source ~/.githelpers && fixup"
 	squash = "!source ~/.githelpers && squash"
-	wtf = what-the-hell-just-happened
 	prune-merged = "!source ~/.githelpers && prune_merged_remotes"
 [color]
 	ui = auto
