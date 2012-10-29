@@ -32,5 +32,5 @@
 	enabled = true
 	autoupdate = true
 [github]
-	user = stephencelis
+	user = davidcelis
 	password = "!echo | pass github.com"
