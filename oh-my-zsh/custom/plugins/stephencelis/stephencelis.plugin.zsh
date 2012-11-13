@@ -34,6 +34,14 @@ function weather {
     head -22
 }
 
+# Checks if there are commits behind from remote
+function git_prompt_behind() {
+  local cb=$(current_branch)
+  if $(echo "$(git log $cb..origin/$cb 2> /dev/null)" | grep '^commit' &> /dev/null); then
+    echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+  fi
+}
+
 # http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
 function _tmux_pane_words {
   local expl
