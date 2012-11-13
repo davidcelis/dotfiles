@@ -73,6 +73,8 @@ install-oh-my-zsh-plugins:
 link-oh-my-zsh:
 	ln -$(ln_options) $(PWD)/zshenv $(HOME)/.zshenv
 	ln -$(ln_options) $(PWD)/zshrc $(HOME)/.zshrc
+	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/powerline.zsh-theme \
+		$(HOME)/.oh-my-zsh/custom/powerline.zsh-theme
 	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/stephencelis.zsh-theme \
 		$(HOME)/.oh-my-zsh/custom/stephencelis.zsh-theme
 	ln -F$(ln_options) $(PWD)/oh-my-zsh/custom/plugins/stephencelis/ \

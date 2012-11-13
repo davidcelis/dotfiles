@@ -3,3 +3,5 @@ let mapleader = ','
 
 call janus#disable_plugin('nerdcommenter')
 call janus#disable_plugin('nerdtree')
+
+let g:Powerline_symbols = 'fancy'
