@@ -127,14 +127,10 @@ install-rbenv-plugins:
 	mkdir -p $(HOME)/.rbenv/plugins
 	git clone -- git://github.com/sstephenson/ruby-build.git \
 		$(HOME)/.rbenv/plugins/ruby-build
-	git clone -- git://github.com/carsomyr/rbenv-bundler.git \
-		$(HOME)/.rbenv/plugins/bundler
 update-rbenv:
 	cd $(HOME)/.rbenv \
 		&& git pull --rebase origin master
 	cd $(HOME)/.rbenv/plugins/ruby-build \
-		&& git pull --rebase origin master
-	cd $(HOME)/.rbenv/plugins/bundler \
 		&& git pull --rebase origin master
 uninstall-rbenv:
 	rm -fR $(HOME)/.rbenv
