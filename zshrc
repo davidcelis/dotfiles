@@ -57,6 +57,9 @@ then
   fi
 fi
 
+# Binstubs.
+export PATH="./bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
