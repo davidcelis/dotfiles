@@ -44,7 +44,7 @@ plugins=( \
 
 # Faster than the rbenv plugin...
 
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 if command -v rbenv >/dev/null
 then
   eval "$(rbenv init - --no-rehash zsh)"
