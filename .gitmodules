@@ -22,3 +22,6 @@
 [submodule "janus/vimux"]
 	path = janus/vimux
 	url = git://github.com/benmills/vimux.git
+[submodule "janus/vim-gitgutter"]
+	path = janus/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
