@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="stephencelis"
+ZSH_THEME="davidcelis"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,12 +32,12 @@ DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=( \
   brew \
+  davidcelis \
   gem \
   git \
   github \
   history-substring-search \
   redis-cli \
-  stephencelis \
   terminalapp \
   zsh-syntax-highlighting \
 )

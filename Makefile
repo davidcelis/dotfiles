@@ -76,10 +76,10 @@ link-oh-my-zsh:
 	ln -$(ln_options) $(PWD)/zshrc $(HOME)/.zshrc
 	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/powerline.zsh-theme \
 		$(HOME)/.oh-my-zsh/custom/powerline.zsh-theme
-	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/stephencelis.zsh-theme \
-		$(HOME)/.oh-my-zsh/custom/stephencelis.zsh-theme
-	ln -F$(ln_options) $(PWD)/oh-my-zsh/custom/plugins/stephencelis/ \
-		$(HOME)/.oh-my-zsh/custom/plugins/stephencelis
+	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/davidcelis.zsh-theme \
+		$(HOME)/.oh-my-zsh/custom/davidcelis.zsh-theme
+	ln -F$(ln_options) $(PWD)/oh-my-zsh/custom/plugins/davidcelis/ \
+		$(HOME)/.oh-my-zsh/custom/plugins/davidcelis
 update-oh-my-zsh:
 	cd $(HOME)/.oh-my-zsh \
 		&& git pull --rebase origin master
