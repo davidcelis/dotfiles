@@ -1,230 +1,111 @@
 
-all: update
-
-install: \
-	update-local \
-	setup-oh-my-zsh \
-	setup-janus \
-	setup-rbenv \
-	link
-update: \
-	update-local \
-	update-oh-my-zsh \
-	update-janus \
-	update-rbenv \
-	update-submodules \
-	update-homebrew \
-	link
+MAKEFLAGS += --check-symlink-times
+BIN = /usr/local/bin
+RBENV_VERSION = system
 
 
-# Local
-
-update-local:
+update: install
 	git pull --rebase || (git stash && git pull --rebase && git stash pop)
-	git submodule sync
 	git submodule update --init
-
-update-submodules:
 	git submodule foreach git checkout master
 	cd $(PWD)/janus/powerline && git checkout develop
-	git submodule foreach git pull --rebase
-
-update-homebrew:
+	git submodule foreach git pull
+	# Homebrew
 	brew update
 	brew upgrade
 	brew cleanup
-
-ln_options = hfsv
-link: link-oh-my-zsh link-janus
-	ln -$(ln_options) $(PWD)/gemrc $(HOME)/.gemrc
-	ln -$(ln_options) $(PWD)/gitconfig $(HOME)/.gitconfig
-	ln -$(ln_options) $(PWD)/githelpers $(HOME)/.githelpers
-	ln -$(ln_options) $(PWD)/gitignore $(HOME)/.gitignore
-	ln -$(ln_options) $(PWD)/irbrc $(HOME)/.irbrc
-	ln -$(ln_options) $(PWD)/jshintrc $(HOME)/.jshintrc
-	ln -$(ln_options) $(PWD)/powconfig $(HOME)/.powconfig
-	ln -$(ln_options) $(PWD)/pryrc $(HOME)/.pryrc
-	ln -$(ln_options) $(PWD)/rspec $(HOME)/.rspec
-	ln -$(ln_options) $(PWD)/screenrc $(HOME)/.screenrc
-	ln -$(ln_options) $(PWD)/tmux.conf $(HOME)/.tmux.conf
-	ln -$(ln_options) $(PWD)/vimrc.after $(HOME)/.vimrc.after
-	ln -$(ln_options) $(PWD)/vimrc.before $(HOME)/.vimrc.before
-	ln -F$(ln_options) $(PWD)/bundle/ $(HOME)/.bundle
-	ln -F$(ln_options) $(PWD)/config/ $(HOME)/.config
-	ln -F$(ln_options) $(PWD)/local/ $(HOME)/.local
-	ln -F$(ln_options) $(PWD)/tmux/ $(HOME)/.tmux
+	# Oh My Zsh
+	cd $(OH_MY_ZSH) && git pull
+	cd $(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search && git pull
+	cd $(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting && git pull
+	# Janus
+	cd $(HOME)/.vim && rake
 
 
-# OH MY ZSHELL!
-#
-# https://github.com/robbyrussel/oh-my-zsh
-
-setup-oh-my-zsh: \
-	install-oh-my-zsh \
-	install-oh-my-zsh-plugins \
-	link-oh-my-zsh
-install-oh-my-zsh:
-	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-install-oh-my-zsh-plugins:
-	mkdir -p $(HOME)/.oh-my-zsh/custom/plugins
-	git clone -- git://github.com/zsh-users/zsh-history-substring-search.git \
-		$(HOME)/.oh-my-zsh/custom/plugins/zsh-history-substring-search
-	git clone -- git://github.com/zsh-users/zsh-syntax-highlighting.git \
-		$(HOME)/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-link-oh-my-zsh:
-	ln -$(ln_options) $(PWD)/zshenv $(HOME)/.zshenv
-	ln -$(ln_options) $(PWD)/zshrc $(HOME)/.zshrc
-	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/powerline.zsh-theme \
-		$(HOME)/.oh-my-zsh/custom/powerline.zsh-theme
-	ln -$(ln_options) $(PWD)/oh-my-zsh/custom/davidcelis.zsh-theme \
-		$(HOME)/.oh-my-zsh/custom/davidcelis.zsh-theme
-	ln -F$(ln_options) $(PWD)/oh-my-zsh/custom/plugins/davidcelis/ \
-		$(HOME)/.oh-my-zsh/custom/plugins/davidcelis
-update-oh-my-zsh:
-	cd $(HOME)/.oh-my-zsh \
-		&& git pull --rebase origin master
-	cd $(HOME)/.oh-my-zsh/custom/plugins/zsh-history-substring-search \
-		&& git pull --rebase origin master
-	cd $(HOME)/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting \
-		&& git pull --rebase origin master
-uninstall-oh-my-zsh:
-	rm -fR $(HOME)/.oh-my-zsh
-unlink-oh-my-zsh:
-	unlink $(HOME)/.zshenv
-	unlink $(HOME)/.zshrc
+install: homebrew janus oh-my-zsh symlinks
 
 
-# Janus
-#
-# http://github.com/carlhuda/janus
+# Dotfiles
 
-setup-janus: \
-	install-janus \
-	link-janus
-install-janus:
-	curl -Lo- https://bit.ly/janus-bootstrap | bash
-link-janus:
-	ln -F$(ln_options) $(PWD)/janus/ $(HOME)/.janus
-update-janus:
-	cd $(HOME)/.vim \
-		&& rake
-uninstall-janus:
-	rm -fR $(HOME)/.vim
-unlink-janus:
-	unlink $(HOME)/.janus
+DOTFILES = \
+  gemrc \
+	gitconfig \
+	githelpers \
+	gitignore \
+	irbrc \
+	pryrc \
+	powconfig \
+	rspec \
+	screenrc \
+	tmux.conf \
+	vimrc.after \
+	vimrc.before \
+	zshenv \
+	zshrc \
+	bundle \
+	config \
+	local \
+	tmux
+SYMLINKS = $(addprefix $(HOME)/., $(DOTFILES))
+$(SYMLINKS):
+	@for dotfile in $(DOTFILES); \
+	do \
+		if test -d $$dotfile; \
+		then \
+			ln -Fhfsv $(PWD)/$$dotfile/ $(HOME)/.$$dotfile; \
+		elif test -f $$dotfile; \
+		then \
+			ln -hfsv $(PWD)/$$dotfile $(HOME)/.$$dotfile; \
+		fi; \
+	done
 
-
-# rbenv
-#
-# https://github.com/sstephenson/rbenv
-
-setup-rbenv: \
-	install-rbenv \
-	install-rbenv-plugins
-install-rbenv:
-	git clone -- git://github.com/sstephenson/rbenv.git $(HOME)/.rbenv
-install-rbenv-plugins:
-	mkdir -p $(HOME)/.rbenv/plugins
-	git clone -- git://github.com/sstephenson/ruby-build.git \
-		$(HOME)/.rbenv/plugins/ruby-build
-update-rbenv:
-	cd $(HOME)/.rbenv \
-		&& git pull --rebase origin master
-	cd $(HOME)/.rbenv/plugins/ruby-build \
-		&& git pull --rebase origin master
-uninstall-rbenv:
-	rm -fR $(HOME)/.rbenv
-
+symlinks: $(SYMLINKS)
 
 # Homebrew
 
-homebrew_formulae = \
-	ack \
-	browser \
-	brew-gem \
-	clojure \
-	cowsay \
-	ctags \
-	daemonize \
-	discount \
-	elasticsearch \
-	erlang \
-	figlet \
-	fortune \
-	gist \
-	git \
-	hub \
-	imagemagick \
-	lame \
-	libyaml \
-	lua \
-	lynx \
-	macvim \
-	memcached \
-	mercurial \
-	mongodb \
-	mysql \
-	node \
-	postgresql \
-	python \
-	readline \
-	reattach-to-user-namespace \
-	redis \
-	repl \
-	sphinx \
-	tmux \
-	tree \
-	varnish \
-	wget \
-	watch \
-	yajl \
-	zsh
-install-homebrew-formulae:
-	brew install $(homebrew_formulae)
-link-homebrew-formulae:
-	brew link readline
+BREW = $(BIN)/brew
+$(BREW):
+	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+$(BIN)/ag: $(BREW)
+	$(BREW) install the_silver_searcher
 
-install-homebrew-gems: install-homebrew-formulae
-	brew gem testrbl
+homebrew: $(BREW)
 
 
-# npm
+# Janus
 
-npm_packages = \
-	coffee-script \
-	jshint \
-	supervisor
-install-npm-packages:
-	npm install -g $(npm_packages)
+$(HOME)/.vim:
+	curl -Lo- https://bit.ly/janus-bootstrap | bash
+$(HOME)/.janus: $(PWD)/janus
+	@ln -Fhfsv $(PWD)/janus/ $(HOME)/.janus
 
-
-# pip
-
-pip_packages = \
-	Pygments \
-	glances
-install-pip-packages:
-	pip install $(pip_packages)
+janus: \
+	$(HOME)/.vim \
+	$(HOME)/.janus
 
 
-# Uninstall
+# Oh My Zsh
 
-clean: \
-	uninstall \
-	unlink
-uninstall: \
-	uninstall-oh-my-zsh \
-	uninstall-janus \
-	uninstall-rbenv
+OH_MY_ZSH = $(HOME)/.oh-my-zsh
+$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search: $(OH_MY_ZSH)
+	git clone -- git://github.com/zsh-users/zsh-history-substring-search.git \
+		$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search
+$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting: $(OH_MY_ZSH)
+	git clone -- git://github.com/zsh-users/zsh-syntax-highlighting.git \
+		$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting
+$(OH_MY_ZSH)/custom/davidcelis.zsh-theme: $(OH_MY_ZSH)
+	@ln -hfsv $(PWD)/oh-my-zsh/custom/davidcelis.zsh-theme \
+		$(OH_MY_ZSH)/custom/davidcelis.zsh-theme
+$(OH_MY_ZSH)/custom/plugins/davidcelis: $(OH_MY_ZSH)
+	@ln -Fhfsv $(PWD)/oh-my-zsh/custom/plugins/davidcelis/ \
+		$(OH_MY_ZSH)/custom/plugins/davidcelis
+$(OH_MY_ZSH):
+	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
-unlink: unlink-oh-my-zsh unlink-janus
-	unlick $(HOME)/.gemrc
-	unlink $(HOME)/.gitconfig
-	unlink $(HOME)/.gitignore
-	unlink $(HOME)/.irbrc
-	unlink $(HOME)/.pryrc
-	unlink $(HOME)/.screenrc
-	unlink $(HOME)/.tmux.conf
-	unlink $(HOME)/.vimrc.after
-	unlink $(HOME)/.vimrc.before
-	unlink $(HOME)/.local
+oh-my-zsh: \
+	$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search \
+	$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting \
+	$(OH_MY_ZSH)/custom/davidcelis.zsh-theme \
+	$(OH_MY_ZSH)/custom/plugins/davidcelis
+
+.PHONY: update
