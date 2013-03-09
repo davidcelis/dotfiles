@@ -119,7 +119,7 @@ oh-my-zsh: $(OH_MY_ZSH_PLUGINS)
 
 RBENV = $(HOME)/.rbenv
 RBENV_PLUGINS = \
-  $(RBENV) \
+	$(RBENV) \
 	$(RBENV)/plugins/bundler \
 	$(RBENV)/plugins/ruby-build \
 	$(RBENV)/plugins/rbenv-default-gems \
