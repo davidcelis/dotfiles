@@ -27,7 +27,7 @@ update: install
 		done
 
 
-install: homebrew janus oh-my-zsh symlinks
+install: homebrew janus oh-my-zsh rbenv symlinks
 
 
 # Dotfiles
@@ -119,6 +119,7 @@ oh-my-zsh: $(OH_MY_ZSH_PLUGINS)
 
 RBENV = $(HOME)/.rbenv
 RBENV_PLUGINS = \
+  $(RBENV) \
 	$(RBENV)/plugins/bundler \
 	$(RBENV)/plugins/ruby-build \
 	$(RBENV)/plugins/rbenv-default-gems \
