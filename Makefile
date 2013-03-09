@@ -21,6 +21,7 @@ update: install
 	# Janus
 	cd $(HOME)/.vim && rake
 	# rbenv
+	cd $(RBENV) && git pull
 	for plugin in $(RBENV_PLUGINS); \
 		do \
 			cd $$plugin && git pull; \
@@ -119,7 +120,6 @@ oh-my-zsh: $(OH_MY_ZSH_PLUGINS)
 
 RBENV = $(HOME)/.rbenv
 RBENV_PLUGINS = \
-	$(RBENV) \
 	$(RBENV)/plugins/bundler \
 	$(RBENV)/plugins/ruby-build \
 	$(RBENV)/plugins/rbenv-default-gems \
