@@ -32,3 +32,6 @@
 	path = janus/rbenv
 	url = git://github.com/tpope/vim-rbenv.git
 	ignore = dirty
+[submodule "janus/dispatch"]
+	path = janus/dispatch
+	url = git@github.com:tpope/vim-dispatch.git
