@@ -21,7 +21,7 @@
 	url = git://github.com/chriskempson/vim-tomorrow-theme.git
 [submodule "janus/git-gutter"]
 	path = janus/git-gutter
-	url = git@github.com:airblade/vim-gitgutter.git
+	url = git://github.com/airblade/vim-gitgutter.git
 [submodule "janus/ag"]
 	path = janus/ag
 	url = git://github.com/rking/ag.vim.git
@@ -31,4 +31,10 @@
 	ignore = dirty
 [submodule "janus/dispatch"]
 	path = janus/dispatch
-	url = git@github.com:tpope/vim-dispatch.git
+	url = git:github.com/tpope/vim-dispatch.git
+[submodule "janus/tbone"]
+	path = janus/tbone
+	url = git:github.com/tpope/vim-tbone.git
+[submodule "janus/bundler"]
+	path = janus/bundler
+	url = git:github.com/tpope/vim-bundler.git
