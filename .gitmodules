@@ -31,10 +31,10 @@
 	ignore = dirty
 [submodule "janus/dispatch"]
 	path = janus/dispatch
-	url = git:github.com/tpope/vim-dispatch.git
+	url = git://github.com/tpope/vim-dispatch.git
 [submodule "janus/tbone"]
 	path = janus/tbone
-	url = git:github.com/tpope/vim-tbone.git
+	url = git://github.com/tpope/vim-tbone.git
 [submodule "janus/bundler"]
 	path = janus/bundler
-	url = git:github.com/tpope/vim-bundler.git
+	url = git://github.com/tpope/vim-bundler.git
