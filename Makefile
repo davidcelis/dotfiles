@@ -35,7 +35,7 @@ install: homebrew janus oh-my-zsh rbenv symlinks
 # Dotfiles
 
 DOTFILES = \
-  gemrc \
+	gemrc \
 	gitconfig \
 	githelpers \
 	gitignore \
