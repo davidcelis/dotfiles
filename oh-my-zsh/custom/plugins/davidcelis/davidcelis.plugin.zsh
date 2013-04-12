@@ -12,6 +12,18 @@ alias ssh-add-all="ssh-add ~/.ssh/*id_rsa"
 alias ag="ag --smart-case"
 alias pianobar='pianokeys && pianobar'
 
+function git(){
+  if ! (( $+_has_working_hub  )); then
+    hub --version &> /dev/null
+    _has_working_hub=$(($? == 0))
+  fi
+  if (( $_has_working_hub )) ; then
+    hub "$@"
+  else
+    command git "$@"
+  fi
+}
+
 # Quickly toggle your editor with ^Z.
 function foreground-editor { fg $EDITOR 2>/dev/null }
 zle -N foreground-editor

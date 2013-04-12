@@ -35,7 +35,6 @@ plugins=( \
   davidcelis \
   gem \
   git \
-  github \
   history-substring-search \
   redis-cli \
   terminalapp \
