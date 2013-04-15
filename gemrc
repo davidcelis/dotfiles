@@ -2,8 +2,8 @@
 :verbose: true
 :update_sources: true
 :sources:
-- http://rubygems.org
+- https://rubygems.org
 :backtrace: false
 :bulk_threshold: 1000
-install: --no-rdoc --no-ri 
+install: --no-rdoc --no-ri
 update:  --no-rdoc --no-ri
