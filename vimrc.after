@@ -48,10 +48,6 @@ augroup dispatch
   autocmd BufNewFile,BufRead *_spec.rb set makeprg=bundle\ exec\ rspec\ %
 augroup END
 
-" Syntastic
-"
-let g:syntastic_ruby_checker = 'macruby'
-
 " Zeus
 "
 function! Zeus()
