@@ -46,6 +46,8 @@ augroup dispatch
   au!
   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
   autocmd BufNewFile,BufRead *_spec.rb set makeprg=bundle\ exec\ rspec\ %
+  autocmd BufNewFile,BufRead *_test.rb compiler rake
+  autocmd BufNewFile,BufRead *_test.rb set makeprg=bundle\ exec\ rake\ minitest\ TEST=%
 augroup END
 
 " Zeus
