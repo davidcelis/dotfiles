@@ -1,3 +1,6 @@
+# No greeting, please
+set -e fish_greeting
+
 # Path
 
 # Local
