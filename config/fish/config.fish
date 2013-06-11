@@ -52,7 +52,7 @@ set -x CODE $HOME/Documents/Code
 
 # Setup autocompletions.
 complete -c c -a (echo (ls -d $CODE/*/ | xargs -n1 basename))
-complete -c pass -a (__fish_pass)
+complete -c pass -a (_pass)
 
 # Aliases.
 alias ssh-add-all "ssh-add ~/.ssh/*id_rsa"
