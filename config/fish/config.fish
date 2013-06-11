@@ -25,12 +25,10 @@ alias vim $EDITOR
 set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 
 # Ruby
-
+set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
 # rbenv rehash >/dev/null ^&1
 
 if test -x (which rbenv)
-  set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
-
   if test -x (which daemonize)
     daemonize $HOME/.rbenv/bin/rbenv rehash
   else
@@ -47,14 +45,14 @@ set -x RUBY_HEAP_FREE_MIN 500000
 # Binstubs
 set PATH "./bin" $PATH
 
-# Set the Code directory.
+# Set the Code directory
 set -x CODE $HOME/Documents/Code
 
-# Setup autocompletions.
+# Setup autocompletions
 complete -c c -a (echo (ls -d $CODE/*/ | xargs -n1 basename))
 complete -c pass -a (_pass)
 
-# Aliases.
+# Aliases
 alias ssh-add-all "ssh-add ~/.ssh/*id_rsa"
 alias ag "ag --smart-case"
 alias pianobar "pianokeys; and /usr/local/bin/pianobar"
