@@ -9,6 +9,7 @@ $ make
 ```
 
 The framework:
+ * Provides configuration for the `fish` shell.
  * Installs and configures [oh-my-zsh][oh-my-zsh] with a custom theme and plugin.
  * Installs [janus][janus] to manage Vim, while also installing several useful Vim plugins
  * Installs [rbenv][rbenv] and [ruby-build][ruby-build]
