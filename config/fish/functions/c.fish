@@ -1,6 +1,6 @@
 function c
   cd $CODE
   for dir in $argv
-    cd $dir*/
+    cd $dir*
   end
 end
