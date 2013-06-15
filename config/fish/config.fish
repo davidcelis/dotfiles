@@ -20,10 +20,9 @@ set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 
 # Ruby
 set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
-# rbenv rehash >/dev/null ^&1
 
-if test -x (which rbenv)
-  if test -x (which daemonize)
+if [ (which rbenv) ]
+  if [ (which daemonize) ]
     daemonize $HOME/.rbenv/bin/rbenv rehash
   else
     nohup rbenv rehash >/dev/null 1>&2 &
