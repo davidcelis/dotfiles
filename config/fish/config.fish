@@ -23,7 +23,7 @@ set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
 
 if [ (which rbenv) ]
   if [ (which daemonize) ]
-    daemonize $HOME/.rbenv/bin/rbenv rehash
+    daemonize (which rbenv) rehash
   else
     nohup rbenv rehash >/dev/null 1>&2 &
   end
