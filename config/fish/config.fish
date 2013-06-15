@@ -10,15 +10,6 @@ set PATH $HOME/.local/bin $PATH
 set PATH /usr/local/bin /usr/local/sbin $PATH
 set PATH $PATH /usr/local/share/python /usr/local/share/npm/bin
 
-# Plan9
-set PATH $PATH /usr/local/plan9/bin
-
-# jsc
-set PATH $PATH /System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
-
-# ActionScript
-set PATH $PATH $HOME/Library/Developer/flex_sdk_4/bin
-
 # MacVim
 set -x EDITOR (_vim)
 set -x VISUAL $EDITOR
