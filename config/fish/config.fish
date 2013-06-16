@@ -21,14 +21,6 @@ set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 # Ruby
 set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
 
-if [ (which rbenv) ]
-  if [ (which daemonize) ]
-    daemonize (which rbenv) rehash
-  else
-    nohup rbenv rehash >/dev/null 1>&2 &
-  end
-end
-
 set -x RUBY_HEAP_MIN_SLOTS 1000000
 set -x RUBY_HEAP_SLOTS_INCREMENT 1000000
 set -x RUBY_HEAP_SLOTS_GROWTH_FACTOR 1
