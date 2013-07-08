@@ -88,17 +88,15 @@ set backupdir=~/.vim/_temp
 set directory=~/.vim/_temp
 
 " Markdown
-function! s:setupWrapping()
-  set wrap
-  set linebreak
+function! s:Wrap()
+  set wrap linebreak nolist
   set textwidth=120
-  set nolist
   set colorcolumn=120
 endfunction
 
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-au FileType markdown call s:setupWrapping()
+au FileType markdown call s:Wrap()
 
 " mml
 augroup myvimrc
