@@ -3,3 +3,6 @@ config/fish/fish_history
 config/hub
 config/mudlet
 config/pianobar/state
+
+vim/bundle/*
+vim/_temp

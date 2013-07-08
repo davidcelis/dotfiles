@@ -7,21 +7,20 @@ update: install
 	git pull --rebase || (git stash && git pull --rebase && git stash pop)
 	git submodule update --init
 	git submodule foreach git checkout master
-	cd $(PWD)/janus/powerline && git checkout develop
 	git submodule foreach git pull
 	# Oh My Zsh
 	cd $(OH_MY_ZSH) && git pull
 	cd $(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search && git pull
 	cd $(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting && git pull
-	# Janus
-	cd $(HOME)/.vim && rake
+	# Vundle
+	vim +BundleInstall! +qall
 	# Homebrew
 	brew update
 	brew upgrade
 	brew cleanup
 
 
-install: homebrew janus oh-my-zsh symlinks
+install: homebrew oh-my-zsh symlinks vundle
 
 
 # Dotfiles
@@ -37,14 +36,14 @@ DOTFILES = \
 	rspec \
 	screenrc \
 	tmux.conf \
-	vimrc.after \
-	vimrc.before \
+	vimrc \
 	zshenv \
 	zshrc \
 	bundle \
 	config \
 	local \
-	tmux
+	tmux \
+	vim
 SYMLINKS = $(addprefix $(HOME)/., $(DOTFILES))
 $(SYMLINKS):
 	@for dotfile in $(DOTFILES); \
@@ -70,16 +69,14 @@ $(BREW):
 homebrew: $(BREW)
 
 
-# Janus
+# Vundle
 
-$(HOME)/.vim:
-	curl -Lo- https://bit.ly/janus-bootstrap | bash
-$(HOME)/.janus: $(PWD)/janus
-	@ln -Fhfsv $(PWD)/janus/ $(HOME)/.janus
+VUNDLE = $(HOME)/.vim/bundle/vundle
+$(VUNDLE):
+	mkdir -p $(HOME)/.vim/_temp
+	vim +BundleInstall! +qall
 
-janus: \
-	$(HOME)/.vim \
-	$(HOME)/.janus
+vundle: $(VUNDLE)
 
 
 # Oh My Zsh
