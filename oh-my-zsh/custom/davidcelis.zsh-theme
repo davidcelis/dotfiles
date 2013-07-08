@@ -1,8 +1,8 @@
-PROMPT=$'%2~$(git_prompt_info)$(git_prompt_ahead)$(git_prompt_behind) %% '
+PROMPT=$'%{${fg[cyan]}%}%2~%{${fg[magenta]}%}$(git_prompt_info)$(git_prompt_ahead)$(git_prompt_behind)%{${reset_color}%} %% '
 
 if which rbenv &> /dev/null
 then
-  RPROMPT=$'%{${fg[white]}%}$(rbenv version-name)%{${reset_color}%}'
+  RPROMPT=$'%{${fg[red]}%}$(rbenv version-name)%{${reset_color}%}'
 fi
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$bold_color%}"
