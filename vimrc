@@ -6,6 +6,7 @@ endif
 
 set nocompatible
 filetype off
+set encoding=utf-8
 
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
@@ -44,6 +45,12 @@ set visualbell
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
+set list
+set listchars=""
+set listchars=tab:\ \
+set listchars+=trail:.
+set listchars+=extends:>
+set listchars+=precedes:<
 
 set wildmenu
 set wildmode=list:longest,full
@@ -87,6 +94,9 @@ set undoreload=10000
 set backupdir=~/.vim/_temp
 set directory=~/.vim/_temp
 
+" Make
+au FileType make setlocal noexpandtab
+
 " Markdown
 function! s:Wrap()
   set wrap linebreak nolist
@@ -98,7 +108,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 au FileType markdown call s:Wrap()
 
-" mml
+" Mml
 augroup myvimrc
   au!
   autocmd FileType mml nnoremap <leader>m :w<cr>:MmlMake<cr>
@@ -115,3 +125,6 @@ augroup dispatch
   autocmd BufNewFile,BufRead *_test.rb compiler rake
   autocmd BufNewFile,BufRead *_test.rb set makeprg=bundle\ exec\ rake\ minitest\ TEST=%
 augroup END
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
