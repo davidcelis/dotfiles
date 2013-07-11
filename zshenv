@@ -27,7 +27,14 @@ export JRUBY_OPTS='--1.9 -Xcext.enabled=true'
 
 # Ruby
 
-export PATH="$HOME/.rbenv/shims:$PATH"
+if [[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ]]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
+
+RUBIES=(~/.rbenv/versions/*)
+export RUBIES
+chruby 2.0.0-p247
 
 export RUBY_HEAP_MIN_SLOTS=1000000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000

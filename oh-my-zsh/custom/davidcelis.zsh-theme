@@ -2,7 +2,7 @@ PROMPT=$'%{${fg[cyan]}%}%2~%{${fg[magenta]}%}$(git_prompt_info)$(git_prompt_ahea
 
 if which rbenv &> /dev/null
 then
-  RPROMPT=$'%{${fg[red]}%}$(rbenv version-name)%{${reset_color}%}'
+  RPROMPT=$'%{${fg[red]}%}$(basename $RUBY_ROOT)%{${reset_color}%}'
 fi
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$bold_color%}"
