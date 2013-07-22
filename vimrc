@@ -29,6 +29,7 @@ Bundle 'tpope/vim-tbone'
 Bundle 'ervandew/ag'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'kien/ctrlp.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'bogado/file-line'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'airblade/vim-gitgutter'
@@ -118,6 +119,7 @@ augroup END
 
 " Ctrl-P
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Dispatch
 augroup dispatch
