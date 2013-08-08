@@ -13,7 +13,7 @@ update: install
 	cd $(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search && git pull
 	cd $(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting && git pull
 	# Vundle
-	vim +BundleInstall! +qall
+	vim +BundleInstall +BundleUpdate +qall
 	# Homebrew
 	brew update
 	brew upgrade
@@ -74,7 +74,7 @@ homebrew: $(BREW)
 VUNDLE = $(HOME)/.vim/bundle/vundle
 $(VUNDLE):
 	mkdir -p $(HOME)/.vim/_temp
-	vim +BundleInstall! +qall
+	vim +BundleInstall +BundleUpdate +qall
 
 vundle: $(VUNDLE)
 
