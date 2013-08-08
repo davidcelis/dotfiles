@@ -13,7 +13,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim'}
+Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'tpope/vim-bundler'
@@ -96,6 +96,10 @@ set undoreload=10000
 
 set backupdir=~/.vim/_temp
 set directory=~/.vim/_temp
+
+" git
+hi def link gitcommitOverflow WarningMsg
+au FileType gitcommit :NumbersOnOff
 
 " Make
 au FileType make setlocal noexpandtab
