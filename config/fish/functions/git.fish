@@ -1,5 +1,5 @@
 function _has_working_hub
-  echo (hub --version ^/dev/null)
+  echo (which hub ^/dev/null)
 end
 
 function git
