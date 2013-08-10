@@ -30,18 +30,18 @@ function fish_prompt
     set git_info "$blue $git_branch"
 
     if [ (_git_dirty) ]
-      set -l dirty "$yellow!"
-      set git_info "$git_info$dirty"
+      set -l dirty $yellow!
+      set git_info $git_info$dirty
     end
 
     if [ (_git_ahead) ]
-      set -l ahead "$blue↑"
-      set git_info "$git_info$ahead"
+      set -l ahead $blue↑
+      set git_info $git_info$ahead
     end
 
     if [ (_git_behind) ]
-      set -l behind "$blue↓"
-      set git_info "$git_info$behind"
+      set -l behind $blue↓
+      set git_info $git_info$behind
     end
   end
 
