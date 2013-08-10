@@ -1,32 +1,32 @@
 function fish_prompt
-  set -g __git_branch_name (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+  set -g __git_branch_name (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
 
   if not set -q -g __git_functions_defined
     set -g __git_functions_defined
 
     function _git_dirty
-      echo (git status -s --ignore-submodules=dirty ^/dev/null)
+      echo (command git status -s --ignore-submodules=dirty)
     end
 
     function _git_ahead
-      echo (git log origin/(echo $__git_branch_name)..(echo $__git_branch_name) ^/dev/null)
+      echo (command git log --format=oneline origin/$__git_branch_name..$__git_branch_name)
     end
 
     function _git_behind
-      echo (git log (echo $__git_branch_name)..origin/(echo $__git_branch_name) ^/dev/null)
+      echo (command git log --format=oneline $__git_branch_name..origin/$__git_branch_name)
     end
   end
 
-  set -l cyan (set_color -o cyan)
+  set -l cyan   (set_color -o cyan)
   set -l yellow (set_color -o yellow)
   set -l purple (set_color -o purple)
-  set -l blue (set_color -o blue)
+  set -l blue   (set_color -o blue)
   set -l normal (set_color normal)
 
   set -l cwd $cyan(prompt_pwd)
 
-  if [ (echo $__git_branch_name) ]
-    set -l git_branch $purple(echo $__git_branch_name)
+  if [ $__git_branch_name ]
+    set -l git_branch $purple$__git_branch_name
     set git_info "$blue $git_branch"
 
     if [ (_git_dirty) ]
