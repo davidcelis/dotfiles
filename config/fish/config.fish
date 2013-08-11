@@ -11,7 +11,7 @@ set PATH /usr/local/bin /usr/local/sbin $PATH
 set PATH $PATH /usr/local/share/python /usr/local/share/npm/bin
 
 # MacVim
-set -x EDITOR (_vim)
+set -x EDITOR vim
 set -x VISUAL $EDITOR
 alias vim $EDITOR
 
