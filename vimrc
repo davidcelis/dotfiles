@@ -99,7 +99,6 @@ set directory=~/.vim/_temp
 
 " git
 hi def link gitcommitOverflow WarningMsg
-au FileType gitcommit :NumbersOnOff
 
 " Make
 au FileType make setlocal noexpandtab
