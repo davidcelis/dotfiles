@@ -1,5 +1,5 @@
 function fish_prompt
-  set -g __git_branch_name (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+  set -g __git_branch_name (command git symbolic-ref --short -q HEAD ^/dev/null)
 
   if not set -q -g __git_functions_defined
     set -g __git_functions_defined
