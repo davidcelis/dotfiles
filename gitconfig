@@ -12,6 +12,7 @@
 	noff = merge --no-ff
 	ignore = update-index --assume-unchanged
 	st = status -s
+	news = log -p HEAD@{1}..HEAD@{0}
 	h = "!source ~/.githelpers && show_git_head"
 	l = "!source ~/.githelpers && pretty_git_log"
 	fixup = "!source ~/.githelpers && fixup"
