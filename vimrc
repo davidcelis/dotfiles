@@ -14,7 +14,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-dispatch'
@@ -132,6 +132,3 @@ augroup dispatch
   autocmd BufNewFile,BufRead *_test.rb compiler rake
   autocmd BufNewFile,BufRead *_test.rb set makeprg=bundle\ exec\ rake\ minitest\ TEST=%
 augroup END
-
-" Powerline
-let g:Powerline_symbols = 'fancy'
