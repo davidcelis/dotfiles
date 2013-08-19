@@ -26,7 +26,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-tbone'
 
-Bundle 'davidcelis/ag'
+Bundle 'ervandew/ag'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
@@ -132,3 +132,14 @@ augroup dispatch
   autocmd BufNewFile,BufRead *_test.rb compiler rake
   autocmd BufNewFile,BufRead *_test.rb set makeprg=bundle\ exec\ rake\ minitest\ TEST=%
 augroup END
+
+" Airline
+let g:airline_powerline_fonts=1
+let g:airline_theme='tomorrow'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_branch_prefix = '⭠ '
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
