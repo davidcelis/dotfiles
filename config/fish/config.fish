@@ -10,10 +10,9 @@ set PATH $HOME/.local/bin $PATH
 set PATH /usr/local/bin /usr/local/sbin $PATH
 set PATH $PATH /usr/local/share/python /usr/local/share/npm/bin
 
-# MacVim
+# vim
 set -x EDITOR vim
 set -x VISUAL $EDITOR
-alias vim $EDITOR
 
 # JRuby 1.9 mode
 set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
