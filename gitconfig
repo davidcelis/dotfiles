@@ -11,8 +11,8 @@
 	pullff = pull --ff-only
 	noff = merge --no-ff
 	ignore = update-index --assume-unchanged
-	amend = commit --amend
-	reuse = commit --amend -C HEAD
+	amend = commit -a --amend
+	reuse = commit -a --amend -C HEAD
 	st = status -s
 	news = log -p HEAD@{1}..HEAD@{0}
 	h = "!source ~/.githelpers && show_git_head"
