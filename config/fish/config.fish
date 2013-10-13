@@ -18,7 +18,8 @@ set -x VISUAL $EDITOR
 set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 
 # Ruby
-set PATH "$HOME/.rbenv/bin" "$HOME/.rbenv/shims" $PATH
+. /usr/local/share/fry/fry.fish
+set -U fry_auto_switch 1
 
 set -x RUBY_HEAP_MIN_SLOTS 1000000
 set -x RUBY_HEAP_SLOTS_INCREMENT 1000000
@@ -41,4 +42,3 @@ alias ssh-add-all "ssh-add ~/.ssh/*id_rsa"
 alias ag "ag --smart-case"
 alias pianobar "pianokeys; and /usr/local/bin/pianobar"
 
-. /usr/local/share/fry/fry.fish
