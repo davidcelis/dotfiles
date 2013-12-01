@@ -5,6 +5,7 @@ config/mudlet
 config/pianobar/state
 
 local/bin/vpn*
+local/share
 
 vim/bundle/*
 vim/_temp
