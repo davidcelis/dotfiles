@@ -46,8 +46,8 @@ set nowrap
 set numberwidth=4
 set visualbell
 
-set colorcolumn=80
 highlight ColorColumn ctermbg=233
+call matchadd('ColorColumn', '\%81v', 100)
 set list
 set listchars=""
 set listchars=tab:\ \
@@ -107,7 +107,7 @@ au FileType make setlocal noexpandtab
 function! s:Wrap()
   set wrap linebreak nolist
   set textwidth=120
-  set colorcolumn=120
+  call matchadd('ColorColumn', '\%121v', 100)
 endfunction
 
 autocmd BufWritePre * :%s/\s\+$//e
