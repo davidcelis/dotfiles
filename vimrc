@@ -37,6 +37,9 @@ Bundle 'stephencelis/vim-mml'
 
 filetype plugin indent on
 
+" Speed
+nnoremap ; :
+
 " Theme/Colors
 syntax on
 colorscheme Tomorrow-Night
