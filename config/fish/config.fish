@@ -21,7 +21,7 @@ set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 . /usr/local/share/fry/fry.fish
 set -U fry_auto_switch 1
 
-set -x RUBY_HEAP_MIN_SLOTS 1000000
+set -x RUBY_GC_HEAP_INIT_SLOTS 1000000
 set -x RUBY_HEAP_SLOTS_INCREMENT 1000000
 set -x RUBY_HEAP_SLOTS_GROWTH_FACTOR 1
 set -x RUBY_GC_MALLOC_LIMIT 100000000
