@@ -65,3 +65,8 @@ prune_merged_remotes() {
     sed 's/ *origin\///' |
     xargs -p -I branch git push origin :branch
 }
+
+accept() {
+  repo=$(git remote -v | egrep "origin" | head -1 | egrep -o "[^:]+/[^.]+")
+  hub merge https://github.com/$repo/pull/$1
+}

@@ -20,6 +20,7 @@
 	fixup = "!source ~/.githelpers && fixup"
 	squash = "!source ~/.githelpers && squash"
 	prune-merged = "!source ~/.githelpers && prune_merged"
+	accept = "!source ~/.githelpers && accept"
 [color]
 	ui = auto
 [core]
