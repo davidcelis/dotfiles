@@ -46,3 +46,6 @@
 [github]
 	user = davidcelis
 	password = "!echo | pass github.com"
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
