@@ -18,6 +18,7 @@ Bundle 'bling/vim-airline'
 
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-dispatch'
+Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
