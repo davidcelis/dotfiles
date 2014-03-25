@@ -8,10 +8,6 @@ update: install
 	git submodule update --init
 	git submodule foreach git checkout master
 	git submodule foreach git pull
-	# Oh My Zsh
-	cd $(OH_MY_ZSH) && git pull
-	cd $(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search && git pull
-	cd $(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting && git pull
 	# Vundle
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 	# Homebrew
@@ -20,7 +16,7 @@ update: install
 	brew cleanup
 
 
-install: homebrew oh-my-zsh symlinks vundle
+install: homebrew symlinks vundle
 
 
 # Dotfiles
@@ -37,8 +33,6 @@ DOTFILES = \
 	screenrc \
 	tmux.conf \
 	vimrc \
-	zshenv \
-	zshrc \
 	bundle \
 	config \
 	local \
@@ -77,32 +71,6 @@ $(VUNDLE):
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 
 vundle: $(VUNDLE)
-
-
-# Oh My Zsh
-
-OH_MY_ZSH = $(HOME)/.oh-my-zsh
-OH_MY_ZSH_PLUGINS = \
-	$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search \
-	$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting \
-	$(OH_MY_ZSH)/custom/davidcelis.zsh-theme \
-	$(OH_MY_ZSH)/custom/plugins/davidcelis
-$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search: $(OH_MY_ZSH)
-	git clone -- git://github.com/zsh-users/zsh-history-substring-search.git \
-		$(OH_MY_ZSH)/custom/plugins/zsh-history-substring-search
-$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting: $(OH_MY_ZSH)
-	git clone -- git://github.com/zsh-users/zsh-syntax-highlighting.git \
-		$(OH_MY_ZSH)/custom/plugins/zsh-syntax-highlighting
-$(OH_MY_ZSH)/custom/davidcelis.zsh-theme: $(OH_MY_ZSH)
-	@ln -hfsv $(PWD)/oh-my-zsh/custom/davidcelis.zsh-theme \
-		$(OH_MY_ZSH)/custom/davidcelis.zsh-theme
-$(OH_MY_ZSH)/custom/plugins/davidcelis: $(OH_MY_ZSH)
-	@ln -Fhfsv $(PWD)/oh-my-zsh/custom/plugins/davidcelis/ \
-		$(OH_MY_ZSH)/custom/plugins/davidcelis
-$(OH_MY_ZSH):
-	curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-
-oh-my-zsh: $(OH_MY_ZSH_PLUGINS)
 
 
 .PHONY: update
