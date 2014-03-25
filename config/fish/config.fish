@@ -27,6 +27,11 @@ set -x RUBY_HEAP_SLOTS_GROWTH_FACTOR 1
 set -x RUBY_GC_MALLOC_LIMIT 100000000
 set -x RUBY_HEAP_FREE_MIN 500000
 
+# Go
+
+set -x GOPATH /usr/local/share/go
+set -x PATH $PATH $GOPATH/bin
+
 # Binstubs
 set PATH "./bin" $PATH
 
