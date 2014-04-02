@@ -4,8 +4,8 @@ This is a basic framework for installing my dotfiles and keeping them up to date
 
 Simply:
 
-``` sh
-$ make
+```sh
+$ make install
 ```
 
 The framework:
@@ -16,6 +16,7 @@ The framework:
  * Links up all of the dotfiles and dotdirectories
 
 ## Antecedent
+
 Most of this comes from [stephencelis/dotfiles][antecedent].
 
 [antecedent]: https://github.com/stephencelis/dotfiles
