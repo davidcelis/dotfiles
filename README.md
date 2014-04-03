@@ -4,16 +4,17 @@ This is a basic framework for installing my dotfiles and keeping them up to date
 
 Simply:
 
-```sh
+```shell
 $ make install
 ```
 
 The framework:
- * Provides configuration for [fish-shell][fish].
- * Installs [homebrew][homebrew]
- * Installs [vundle][vundle] to manage Vim, while also installing several useful Vim plugins
- * Keeps all of the above up-to-date
- * Links up all of the dotfiles and dotdirectories
+
+* Provides configuration for [fish-shell][fish].
+* Installs [homebrew][homebrew]
+* Installs [vundle][vundle] to manage Vim, while also installing several useful Vim plugins
+* Keeps all of the above up-to-date
+* Links up all of the dotfiles and dotdirectories
 
 ## Antecedent
 
