@@ -14,9 +14,6 @@ set PATH $PATH /usr/local/share/python /usr/local/share/npm/bin
 set -x EDITOR vim
 set -x VISUAL $EDITOR
 
-# JRuby 1.9 mode
-set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
-
 # Ruby
 . /usr/local/share/fry/fry.fish
 set -U fry_auto_switch 1
@@ -27,10 +24,15 @@ set -x RUBY_HEAP_SLOTS_GROWTH_FACTOR 1
 set -x RUBY_GC_MALLOC_LIMIT 100000000
 set -x RUBY_HEAP_FREE_MIN 500000
 
-# Go
+# JRuby 1.9 mode
+set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
 
+# Go
 set -x GOPATH /usr/local/share/go
 set -x PATH $PATH $GOPATH/bin
+
+# Docker
+set -x DOCKER_HOST "tcp://localhost:4243"
 
 # Binstubs
 set PATH "./bin" $PATH
