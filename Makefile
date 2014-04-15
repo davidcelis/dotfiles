@@ -35,7 +35,6 @@ DOTFILES = \
 	irbrc \
 	pryrc \
 	powconfig \
-	rspec \
 	screenrc \
 	tmux.conf \
 	vimrc \
