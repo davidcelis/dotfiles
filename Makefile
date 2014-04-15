@@ -44,16 +44,21 @@ DOTFILES = \
 	tmux \
 	vim
 SYMLINKS = $(addprefix $(HOME)/., $(DOTFILES))
+ifeq (($OS),Darwin)
+FLAGS = hfsv
+else
+FLAGS = fsv
+endif
 $(SYMLINKS):
 	# Symlinking all dotfiles and dotdirectories
 	@for dotfile in $(DOTFILES); \
 	do \
 		if test -d $$dotfile; \
 		then \
-			ln -Fhfsv $(PWD)/$$dotfile/ $(HOME)/.$$dotfile; \
+			ln -F$(FLAGS) $(PWD)/$$dotfile/ $(HOME)/.$$dotfile; \
 		elif test -f $$dotfile; \
 		then \
-			ln -hfsv $(PWD)/$$dotfile $(HOME)/.$$dotfile; \
+			ln -$(FLAGS) $(PWD)/$$dotfile $(HOME)/.$$dotfile; \
 		fi; \
 	done
 
