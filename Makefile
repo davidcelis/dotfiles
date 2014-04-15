@@ -1,22 +1,28 @@
 
 MAKEFLAGS += --check-symlink-times
 BIN = /usr/local/bin
-
+OS = $(shell uname -s)
 
 update: install
 	git pull --rebase || (git stash && git pull --rebase && git stash pop)
 	git submodule update --init
 	git submodule foreach git checkout master
 	git submodule foreach git pull
-	# Vundle
+	# Updating Vundle packages
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
-	# Homebrew
+ifeq ($(OS),Darwin)
+	# Updating Homebrew, upgrading formulae, and cleaning up old versions
 	brew update
 	brew upgrade
 	brew cleanup
+endif
 
 
+ifeq ($(OS),Darwin)
 install: homebrew symlinks vundle
+else
+install: symlinks vundle
+endif
 
 
 # Dotfiles
@@ -40,6 +46,7 @@ DOTFILES = \
 	vim
 SYMLINKS = $(addprefix $(HOME)/., $(DOTFILES))
 $(SYMLINKS):
+	# Symlinking all dotfiles and dotdirectories
 	@for dotfile in $(DOTFILES); \
 	do \
 		if test -d $$dotfile; \
@@ -58,6 +65,7 @@ symlinks: $(SYMLINKS)
 
 BREW = $(BIN)/brew
 $(BREW):
+	# Installing Homebrew
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 homebrew: $(BREW)
@@ -67,6 +75,7 @@ homebrew: $(BREW)
 
 VUNDLE = $(HOME)/.vim/bundle/vundle
 $(VUNDLE):
+	# Installing Vundle
 	mkdir -p $(HOME)/.vim/_temp
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 
