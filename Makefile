@@ -12,9 +12,7 @@ update: install
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 ifeq ($(OS),Darwin)
 	# Updating Homebrew, upgrading formulae, and cleaning up old versions
-	brew update
-	brew upgrade
-	brew cleanup
+	brew bundle
 endif
 
 
