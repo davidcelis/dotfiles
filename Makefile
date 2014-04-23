@@ -12,7 +12,9 @@ update: install
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 ifeq ($(OS),Darwin)
 	# Updating Homebrew, upgrading formulae, and cleaning up old versions
-	brew bundle
+	brew update
+	brew upgrade
+	brew cleanup
 endif
 
 
@@ -69,6 +71,8 @@ BREW = $(BIN)/brew
 $(BREW):
 	# Installing Homebrew
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	# Installing formulae from the Brewfile
+	brew bundle
 
 homebrew: $(BREW)
 
