@@ -15,6 +15,7 @@ Bundle 'gmarik/vundle'
 
 " Themeing
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Bundle 'junegunn/goyo.vim'
 Bundle 'bling/vim-airline'
 Bundle 'bogado/file-line'
 Bundle 'myusuf3/numbers.vim'
