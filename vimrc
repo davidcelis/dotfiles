@@ -13,28 +13,31 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+" Themeing
 Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Bundle 'bling/vim-airline'
+Bundle 'bogado/file-line'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'airblade/vim-gitgutter'
 
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-dispatch'
+" Syntaxes
 Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
+Bundle 'stephencelis/vim-mml'
+
+" Utilities
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-tbone'
-
 Bundle 'ervandew/ag'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
-Bundle 'bogado/file-line'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'stephencelis/vim-mml'
 
 filetype plugin indent on
 
