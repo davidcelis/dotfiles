@@ -1,5 +1,4 @@
 " Vundle
-
 if &shell =~# 'fish$'
   set shell=/usr/local/bin/zsh
 endif
