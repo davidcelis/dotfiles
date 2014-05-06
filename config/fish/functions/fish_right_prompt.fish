@@ -1,12 +1,8 @@
 function fish_right_prompt
-  set -g current_bg NONE
-  set -g segment_separator \uE0B2
-
   if contains fry (functions)
-    echo (set_color red)$segment_separator
-    prompt_segment red black (fry current)
+    set -l red (set_color red)
+    set -l normal (set_color normal)
 
-    set_color -b normal
-    set -g current_bg NONE
+    echo $red(fry current)$normal
   end
 end
