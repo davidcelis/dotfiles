@@ -8,7 +8,7 @@ set PATH $HOME/.local/bin $PATH
 
 # Homebrew
 set PATH /usr/local/bin /usr/local/sbin $PATH
-set PATH $PATH /usr/local/share/python /usr/local/share/npm/bin
+set PATH $PATH /usr/local/share/npm/bin
 
 # vim
 set -x EDITOR vim
