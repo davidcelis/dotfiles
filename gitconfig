@@ -21,6 +21,7 @@
 	squash = "!source ~/.githelpers && squash"
 	prune-merged = "!source ~/.githelpers && prune_merged"
 	accept = "!source ~/.githelpers && accept"
+	update = "!source ~/.githelpers && update"
 [color]
 	ui = auto
 [core]

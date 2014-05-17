@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Original by Gary Bernhardt:
 #
@@ -69,4 +69,13 @@ prune_merged_remotes() {
 accept() {
   repo=$(git remote -v | egrep "origin" | head -1 | egrep -o "[^:]+/[^.]+")
   hub merge https://github.com/$repo/pull/$1
+}
+
+update() {
+  if [[ $(git remote -v | grep "upstream") == "" ]]; then
+    read -e -p "No upstream remote found. Please enter its URL: " upstream
+    git remote add upstream "$upstream"
+  fi
+
+  git fetch upstream && git rebase upstream/master
 }
