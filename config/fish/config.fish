@@ -16,7 +16,8 @@ set -x VISUAL $EDITOR
 
 # Ruby
 . /usr/local/share/fry/fry.fish
-set -U fry_auto_switch 1
+fry config auto on
+fry config installer ruby-install
 
 set -x RUBY_GC_HEAP_INIT_SLOTS 1000000
 set -x RUBY_HEAP_SLOTS_INCREMENT 1000000
