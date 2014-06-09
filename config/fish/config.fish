@@ -33,7 +33,7 @@ set -x GOPATH /usr/local/share/go
 set -x PATH $PATH $GOPATH/bin
 
 # Docker
-set -x DOCKER_HOST "tcp://localhost:4243"
+set -x DOCKER_HOST "tcp://127.0.0.1:2375"
 
 # Binstubs
 set PATH "./bin" $PATH
