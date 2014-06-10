@@ -10,34 +10,34 @@ set encoding=utf-8
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Themeing
-Bundle 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-Bundle 'junegunn/goyo.vim'
-Bundle 'bling/vim-airline'
-Bundle 'bogado/file-line'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plugin 'junegunn/goyo.vim'
+Plugin 'bling/vim-airline'
+Plugin 'bogado/file-line'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'airblade/vim-gitgutter'
 
 " Syntaxes
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'stephencelis/vim-mml'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-rails'
+Plugin 'stephencelis/vim-mml'
 
 " Utilities
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-tbone'
-Bundle 'ervandew/ag'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'JazzCore/ctrlp-cmatcher'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-tbone'
+Plugin 'ervandew/ag'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'JazzCore/ctrlp-cmatcher'
 
 filetype plugin indent on
 
