@@ -1,6 +1,8 @@
 [user]
 	name = David Celis
 	email = me@davidcel.is
+[help]
+	autocorrect = 20
 [alias]
 	br = branch
 	ci = commit -s -v
