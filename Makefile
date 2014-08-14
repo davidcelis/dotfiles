@@ -19,11 +19,25 @@ endif
 
 
 ifeq ($(OS),Darwin)
-install: homebrew symlinks vundle
+install: homebrew ruby symlinks vundle
 else
-install: symlinks vundle
+install: ruby symlinks vundle
 endif
 
+
+# Ruby
+
+RUBY = $(HOME)/.rubies/2.1.2/bin/ruby
+
+$(RUBY):
+	cd $(HOME)/Downloads
+	git clone https://github.com/terlar/fry.git
+	cd fry
+	make install
+	mkdir -p $(HOME)/.rubies
+	ruby-install ruby 2.1.2 -i $(HOME)/.rubies/2.1.2
+
+ruby: $(RUBY)
 
 # Dotfiles
 
