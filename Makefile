@@ -97,6 +97,7 @@ VUNDLE = $(HOME)/.vim/bundle/vundle
 $(VUNDLE):
 	# Installing Vundle
 	mkdir -p $(HOME)/.vim/_temp
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
 	vim +BundleInstall +BundleUpdate +BundleClean +qall
 
 vundle: $(VUNDLE)
