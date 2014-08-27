@@ -4,7 +4,7 @@ This is a basic framework for installing my dotfiles and keeping them up to date
 
 Simply:
 
-```shell
+```sh
 $ make install
 ```
 
