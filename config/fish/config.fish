@@ -26,8 +26,8 @@ set -x RUBY_HEAP_SLOTS_GROWTH_FACTOR 1
 set -x RUBY_GC_MALLOC_LIMIT 100000000
 set -x RUBY_HEAP_FREE_MIN 500000
 
-# JRuby 1.9 mode
-set -x JRUBY_OPTS "--1.9 -Xcext.enabled=true"
+# JRuby 2.0 mode
+set -x JRUBY_OPTS "--2.0 -Xcext.enabled=true"
 
 # Go
 set -x GOPATH /usr/local/share/go
