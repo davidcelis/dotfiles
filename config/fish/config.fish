@@ -13,6 +13,7 @@ set PATH $PATH /usr/local/share/npm/bin
 # vim
 set -x EDITOR vim
 set -x VISUAL $EDITOR
+eval sh $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Ruby
 . /usr/local/share/fry/fry.fish
