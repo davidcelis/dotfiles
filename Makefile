@@ -84,7 +84,7 @@ symlinks: $(SYMLINKS)
 BREW = $(BIN)/brew
 $(BREW):
 	# Installing Homebrew
-	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 	# Installing formulae from the Brewfile
 	brew bundle
 
