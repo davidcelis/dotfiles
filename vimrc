@@ -67,7 +67,6 @@ set wildmode=list:longest,full
 
 " Indentation
 set autoindent
-set cindent
 set expandtab
 set shiftwidth=2
 set smartindent
@@ -106,7 +105,6 @@ set directory=~/.vim/_temp
 
 " git
 hi def link gitcommitOverflow WarningMsg
-au FileType gitcommit set nocindent
 
 " Make
 au FileType make setlocal noexpandtab
