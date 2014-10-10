@@ -12,7 +12,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-" Themeing
+" Theming
 Plugin 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plugin 'junegunn/goyo.vim'
 Plugin 'bling/vim-airline'
@@ -106,6 +106,7 @@ set directory=~/.vim/_temp
 
 " git
 hi def link gitcommitOverflow WarningMsg
+au FileType gitcommit set nocindent
 
 " Make
 au FileType make setlocal noexpandtab
@@ -143,3 +144,4 @@ augroup END
 " Airline
 let g:airline_powerline_fonts=1
 let g:airline_theme='tomorrow'
+
