@@ -5,12 +5,11 @@ begin
   IRB.conf[:SAVE_HISTORY] = 1_000
   IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 
-  version = if ENV.key?('RBENV_ROOT')
-              `rbenv version-name`.chomp
-            else
-              '%s-p%d' % [RUBY_VERSION, RUBY_PATCHLEVEL]
-            end
-  version = '>' if version.empty?
+  if RUBY_VERSION && RUBY_PATCHLEVEL
+    version = [RUBY_VERSION, RUBY_PATCHLEVEL].join('-p')
+  else
+    version = nil
+  end
 
   IRB.conf[:PROMPT][:CUSTOM] = {
     :PROMPT_N => "#{version}> ",
