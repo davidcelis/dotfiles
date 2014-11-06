@@ -17,8 +17,6 @@ eval sh $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Ruby
 . /usr/local/share/fry/fry.fish
-fry config auto on
-fry config installer ruby-install
 
 set -x RUBY_GC_HEAP_INIT_SLOTS 1000000
 set -x RUBY_HEAP_SLOTS_INCREMENT 1000000
