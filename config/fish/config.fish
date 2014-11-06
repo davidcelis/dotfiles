@@ -34,7 +34,9 @@ set -x GOPATH /usr/local/share/go
 set -x PATH $PATH $GOPATH/bin
 
 # Docker
-set -x DOCKER_HOST "tcp://127.0.0.1:2375"
+set -x DOCKER_CERT_PATH /Users/david/.boot2docker/certs/boot2docker-vm
+set -x DOCKER_TLS_VERIFY 1
+set -x DOCKER_HOST tcp://192.168.59.103:2376
 
 # Binstubs
 set PATH "./bin" $PATH
