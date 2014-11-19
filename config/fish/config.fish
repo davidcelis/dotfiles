@@ -4,11 +4,11 @@ set -e fish_greeting
 # Path
 
 # Local
-set PATH $HOME/.local/bin $PATH
+set -x PATH $HOME/.local/bin $PATH
 
 # Homebrew
-set PATH /usr/local/bin /usr/local/sbin $PATH
-set PATH $PATH /usr/local/share/npm/bin
+set -x PATH /usr/local/bin /usr/local/sbin $PATH
+set -x PATH $PATH /usr/local/share/npm/bin
 
 # vim
 set -x EDITOR vim
@@ -37,7 +37,7 @@ set -x DOCKER_TLS_VERIFY 1
 set -x DOCKER_HOST tcp://192.168.59.103:2376
 
 # Binstubs
-set PATH "./bin" $PATH
+set -x PATH $PWD/bin $PATH
 
 # Set the Code directory
 set -x CODE $HOME/Documents/Code
