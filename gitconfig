@@ -50,7 +50,8 @@
 	user = davidcelis
 	password = "!echo | pass github.com"
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
 [ghi]
 	token = !security find-internet-password -a davidcelis -s github.com -l 'ghi token' -w
