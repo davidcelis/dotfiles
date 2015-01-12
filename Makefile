@@ -27,7 +27,7 @@ endif
 
 # Ruby
 
-RUBY = $(HOME)/.rubies/2.1.2/bin/ruby
+RUBY = $(HOME)/.rubies/2.2.0/bin/ruby
 
 $(RUBY):
 	cd $(HOME)/Downloads
@@ -35,7 +35,7 @@ $(RUBY):
 	cd fry
 	make install
 	mkdir -p $(HOME)/.rubies
-	ruby-install ruby 2.1.2 -i $(HOME)/.rubies/2.1.2
+	ruby-install ruby 2.2.0 -i $(HOME)/.rubies/2.2.0
 
 ruby: $(RUBY)
 
