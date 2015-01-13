@@ -8,7 +8,7 @@ filetype off
 set encoding=utf-8
 
 set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
@@ -39,6 +39,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'JazzCore/ctrlp-cmatcher'
 
+call vundle#end()
 filetype plugin indent on
 
 " Speed
@@ -142,4 +143,3 @@ augroup END
 " Airline
 let g:airline_powerline_fonts=1
 let g:airline_theme='tomorrow'
-
