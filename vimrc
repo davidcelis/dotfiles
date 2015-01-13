@@ -38,6 +38,7 @@ Plugin 'ervandew/ag'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'JazzCore/ctrlp-cmatcher'
+Plugin 'benmills/vimux'
 
 call vundle#end()
 filetype plugin indent on
