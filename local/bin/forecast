@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-coordinates=$(whereami | awk '{print $2}' | head -2 | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g')
-curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$coordinates |
+curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
   jq '.minutely.data[:15] | .[].precipIntensity' |
   spark
