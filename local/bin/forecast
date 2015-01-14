@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
+#
+# Generates sparklines for the next 15 minutes of precipitation in your current
+# location. This relies on `whereami` (a Mac OS X utility), `jq`, and `spark`.
+# Install all of them using homebrew:
+#
+#   brew install whereami jq spark
+#
+# Then:
+#
+#   forecast
+#
 sparkfile="/tmp/forecast.spark"
 
 if [ ! -f "$sparkfile" ]; then
@@ -10,10 +21,10 @@ now=$(date +%s)
 
 if (( ("$now" - "$last") > 120 )); then
   sparklines=$(curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
-            jq ".minutely.data[:15] | .[].precipIntensity" |
+            jq ".minutely.data[:15] | .[].precipIntensity * 1000" |
             spark)
 
   echo $sparklines | tee $sparkfile
 else
-  cat $sparkfile  
+  cat $sparkfile
 fi
