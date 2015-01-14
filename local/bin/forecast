@@ -42,8 +42,8 @@ now=$(date +%s)
 
 if (( ("$now" - "$last") > 120 )); then
   sparklines=$(curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
-            jq ".minutely.data[:$minutes] | .[].precipIntensity * 1000" |
-            spark)
+                   jq ".minutely.data[:$minutes] | .[].precipIntensity * 1000" |
+                   spark)
 
   echo $sparklines | tee $sparkfile
 else
