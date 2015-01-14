@@ -11,6 +11,21 @@
 #   forecast
 #
 sparkfile="/tmp/forecast.spark"
+minutes=60
+
+usage() { echo "Usage: forecast [-m <1...60>]" 1>&2; exit 1; }
+
+while getopts ":m:" flag; do
+  case "${flag}" in
+    m)
+      minutes=${OPTARG}
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+shift $((OPTIND-1))
 
 if [ ! -f "$sparkfile" ]; then
   touch $sparkfile
@@ -21,7 +36,7 @@ now=$(date +%s)
 
 if (( ("$now" - "$last") > 120 )); then
   sparklines=$(curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
-            jq ".minutely.data[:15] | .[].precipIntensity * 1000" |
+            jq ".minutely.data[:$minutes] | .[].precipIntensity * 1000" |
             spark)
 
   echo $sparklines | tee $sparkfile
