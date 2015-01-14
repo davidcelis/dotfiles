@@ -48,6 +48,6 @@ alias ag "ag --smart-case"
 alias pianobar "pianokeys; and /usr/local/bin/pianobar"
 
 # Source sensitive configuration
-if [ -f ~/.local/share/config.fish ]
-  . ~/.local/share/config.fish
+if [ -f "$HOME/.local/share/config.fish" ]
+  . $HOME/.local/share/config.fish
 end
