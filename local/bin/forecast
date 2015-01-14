@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
-curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
-  jq '.minutely.data[:15] | .[].precipIntensity' |
-  spark
+sparkfile="/tmp/forecast.spark"
+
+if [ ! -f "$sparkfile" ]; then
+  touch $sparkfile
+fi
+
+last=$(stat -f %m $sparkfile)
+now=$(date +%s)
+
+if (( ("$now" - "$last") > 120 )); then
+  sparklines=$(curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
+            jq ".minutely.data[:15] | .[].precipIntensity" |
+            spark)
+
+  echo $sparklines | tee $sparkfile
+else
+  cat $sparkfile  
+fi
