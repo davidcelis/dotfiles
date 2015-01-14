@@ -16,6 +16,13 @@
 #
 #   forecast -m 15
 #   ▅▇█▆▄▃▃▂▂▂▁▁▁▁▁
+#
+# The sparklines generated will be saved to /tmp/forecast.spark if you wish to
+# easily access it from other utilities without repeating calls. Additionally,
+# this utility will use that file's mtime to make sure that you do not go over
+# the number of API requests that forecast.io gives you for free. As such, this
+# utility will only attempt to call the forecast.io API if two minutes have
+# passed since the last call.
 sparkfile="/tmp/forecast.spark"
 minutes=60
 
