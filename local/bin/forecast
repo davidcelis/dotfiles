@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
 #
-# Generates sparklines for the next 15 minutes of precipitation in your current
-# location. This relies on `whereami` (a Mac OS X utility), `jq`, and `spark`.
-# Install all of them using homebrew:
+# Generates sparklines for the next hour of precipitation in your current
+# location. You can specify the number of minutes using the `-m` option. This
+# relies on `whereami` (a Mac OS X utility), `jq`, and `spark`. Install all of
+# them using homebrew:
 #
 #   brew install whereami jq spark
 #
-# Then:
+# Additionally, you'll need to register a forecast.io API Key by visiting
+# https://developer.forecast.io/ - once you've done that:
 #
+#   export FORECAST_API_KEY=my_api_key
 #   forecast
+#   ▅▇█▆▄▃▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 #
+#   forecast -m 15
+#   ▅▇█▆▄▃▃▂▂▂▁▁▁▁▁
 sparkfile="/tmp/forecast.spark"
 minutes=60
 
