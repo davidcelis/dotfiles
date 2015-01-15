@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# A simple little script to output Network I/O to a tmux status bar.
+# Requires `ifstat`.
+#
+#    $ network
+#    ↓0.33 KB/s ↑0.12 KB/s
+
+data=$(ifstat -i en0 -z -S -q 1 1 | tail -1)
+down=$(echo $data | cut -f 2 -d " ")
+up=$(echo $data | cut -f 3 -d " ")
+
+if [ $(echo "($down / 1024) > 1" | bc -l) -eq 1 ]; then
+  down=$(echo "$down / 1024" | bc -l | xargs printf "%.2f")
+  down="#[fg=red]↓$down MB/s#[fg=]"
+else
+  down="#[fg=green]↓$down KB/s#[fg=]"
+fi
+
+if [ $(echo "($up / 1024) > 1" | bc -l) -eq 1 ]; then
+  up=$(echo "$up / 1024" | bc -l | xargs printf "%.2f")
+  up="#[fg=red]↑$up MB/s#[fg=]"
+else
+  up="#[fg=green]↑$up KB/s#[fg=]"
+fi
+
+echo -e $"$down $up"
