@@ -24,6 +24,7 @@
 # utility will only attempt to call the forecast.io API if two minutes have
 # passed since the last call.
 sparkfile="/tmp/forecast.spark"
+jsonfile="/tmp/forecast.json"
 minutes=60
 
 usage() { echo "Usage: forecast [-m <1...60>]" 1>&2; exit 1; }
@@ -40,19 +41,22 @@ while getopts ":m:" flag; do
 done
 shift $((OPTIND-1))
 
-if [ ! -f "$sparkfile" ]; then
+if [ ! -f "$jsonfile" ]; then
+  touch $jsonfile
   touch $sparkfile
 fi
 
-last=$(stat -f %m $sparkfile)
+last=$(stat -f %m $jsonfile)
 now=$(date +%s)
 
 if (( ("$now" - "$last") > 120 )); then
-  sparklines=$(curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) |
-                   jq ".minutely.data[:$minutes] | .[].precipIntensity * 1000" |
-                   spark)
+  curl -Ss https://api.forecast.io/forecast/$FORECAST_API_KEY/$(whereami) > $jsonfile
+  temperature=$(cat $jsonfile | jq ".currently.temperature" | xargs printf "%.0f")
+  sparklines=$(cat $jsonfile |
+                 jq ".minutely.data[:$minutes] | .[].precipIntensity * 10000" |
+                 spark)
 
-  echo $sparklines | tee $sparkfile
+  echo $temperature"°F $sparklines" | tee $sparkfile
 else
   cat $sparkfile
 fi
