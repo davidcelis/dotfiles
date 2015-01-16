@@ -2,10 +2,12 @@
 #
 # Generates sparklines for the next hour of precipitation in your current
 # location. You can specify the number of minutes using the `-m` option. This
-# relies on `whereami` (a Mac OS X utility), `jq`, and `spark`. Install all of
-# them using homebrew:
+# relies on `whereami` (a Mac OS X utility), `jq`, and `spark`. Unfortunately,
+# the proper version of Spark does not have support for the min/max flags that
+# this utility needs, so you'll need to install a fork. Install everything using
+# homebrew:
 #
-#   brew install whereami jq spark
+#   brew tap davidcelis/spark && brew install whereami jq davidcelis/spark/spark
 #
 # Additionally, you'll need to register a forecast.io API Key by visiting
 # https://developer.forecast.io/ - once you've done that:
@@ -54,7 +56,7 @@ if (( ("$now" - "$last") > 120 )); then
   temperature=$(cat $jsonfile | jq ".currently.temperature" | xargs printf "%.0f")
   sparklines=$(cat $jsonfile |
                  jq ".minutely.data[:$minutes] | .[].precipIntensity * 10000" |
-                 spark)
+                 spark -m 0 -M 5000)
 
   echo $temperature"°F $sparklines" | tee $sparkfile
 else
