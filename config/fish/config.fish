@@ -1,3 +1,8 @@
+# Don't re-evaluate in tmux
+if [ -n "$TMUX" ]
+  exit
+end
+
 # No greeting, please
 set -e fish_greeting
 
