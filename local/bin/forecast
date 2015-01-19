@@ -56,7 +56,7 @@ if (( ("$now" - "$last") > 120 )); then
   temperature=$(cat $jsonfile | jq ".currently.temperature" | xargs printf "%.0f")
   sparklines=$(cat $jsonfile |
                  jq ".minutely.data[:$minutes] | .[].precipIntensity * 10000" |
-                 spark -m 0 -M 5000)
+                 spark -m 0 -M 1500)
 
   echo $temperature"°F $sparklines" | tee $sparkfile
 else
