@@ -28,6 +28,7 @@
 	ui = auto
 [core]
 	excludesfile = ~/.gitignore
+	precomposeunicode = false
 [credential]
 	helper = osxkeychain
 [diff]
