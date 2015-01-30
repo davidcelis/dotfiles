@@ -12,3 +12,4 @@ local/share
 
 vim/bundle/*
 vim/_temp
+config/configstore/
