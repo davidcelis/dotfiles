@@ -40,10 +40,6 @@ end
 # Ruby
 source /usr/local/share/fry/fry.fish
 
-# This is done again to ensure binstubs are prepended to the $PATH after
-# sourcing the Ruby version manager. Only do this if not in TMUX.
-test -n "$TMUX"; or set -x PATH $PWD/bin $PATH
-
 eval sh $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Aliases
