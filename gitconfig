@@ -56,3 +56,7 @@
 	smudge = git media smudge %f
 [ghi]
 	token = !security find-internet-password -a davidcelis -s github.com -l 'ghi token' -w
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
