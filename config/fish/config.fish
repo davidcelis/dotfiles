@@ -46,6 +46,7 @@ eval sh $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 alias ssh-add-all "ssh-add ~/.ssh/*id_rsa"
 alias ag "ag --smart-case"
 alias pianobar "pianokeys; and /usr/local/bin/pianobar"
+alias ls "exa"
 
 # Source sensitive configuration
 if [ -f "$HOME/.local/share/config.fish" ]
