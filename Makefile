@@ -27,7 +27,7 @@ endif
 
 # Ruby
 
-RUBY = $(HOME)/.rubies/2.2.0/bin/ruby
+RUBY = $(HOME)/.rubies/2.2.1/bin/ruby
 
 $(RUBY):
 	cd $(HOME)/Downloads
