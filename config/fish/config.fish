@@ -38,7 +38,7 @@ if [ -z "$TMUX" ]
 end
 
 # Ruby
-source /usr/local/share/fry/fry.fish
+source /usr/local/opt/fry/share/fry/fry.fish
 
 eval sh $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
