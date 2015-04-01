@@ -8,9 +8,9 @@ function __c_complete_directory
   end
 
   if [ -d $CODE_DIR ]
-    ls -d $CODE_DIR/*/ | xargs -n1 basename
+    command ls -d $CODE_DIR/*/ | xargs -n1 basename
   else
-    ls -d $CODE_DIR*/ | xargs -n1 basename
+    command ls -d $CODE_DIR*/ | xargs -n1 basename
   end
 end
 
