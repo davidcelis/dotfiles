@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Other potential offenders:
-#
-# - com.apple.metadata:kMDItemDownloadedDate
-# - com.apple.metadata:kMDItemWhereFroms
-
-xattr -r -d com.apple.quarantine "$@"
