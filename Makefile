@@ -5,11 +5,8 @@ OS = $(shell uname -s)
 
 update: install
 	git pull --rebase || (git stash && git pull --rebase && git stash pop)
-	git submodule update --init
-	git submodule foreach git checkout master
-	git submodule foreach git pull
-	# Updating Vundle packages
-	vim +BundleInstall +BundleUpdate +BundleClean +qall
+	# Updating vim-plug packages
+	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 ifeq ($(OS),Darwin)
 	# Updating Homebrew, upgrading formulae, and cleaning up old versions
 	brew update
@@ -19,9 +16,9 @@ endif
 
 
 ifeq ($(OS),Darwin)
-install: homebrew ruby symlinks vundle
+install: homebrew ruby symlinks
 else
-install: ruby symlinks vundle
+install: ruby symlinks
 endif
 
 
@@ -89,18 +86,6 @@ $(BREW):
 	brew bundle
 
 homebrew: $(BREW)
-
-
-# Vundle
-
-VUNDLE = $(HOME)/.vim/bundle/vundle
-$(VUNDLE):
-	# Installing Vundle
-	mkdir -p $(HOME)/.vim/_temp
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-	vim +BundleInstall +BundleUpdate +BundleClean +qall
-
-vundle: $(VUNDLE)
 
 
 .PHONY: update

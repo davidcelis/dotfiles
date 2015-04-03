@@ -4,44 +4,38 @@ if &shell =~# 'fish$'
 endif
 
 set nocompatible
-filetype off
 set encoding=utf-8
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#begin()
-
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " Theming
-Plugin 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-Plugin 'junegunn/goyo.vim'
-Plugin 'bling/vim-airline'
-Plugin 'bogado/file-line'
-Plugin 'myusuf3/numbers.vim'
-Plugin 'airblade/vim-gitgutter'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'junegunn/goyo.vim'
+Plug 'bling/vim-airline'
+Plug 'bogado/file-line'
+Plug 'myusuf3/numbers.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Syntaxes
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-rails'
-Plugin 'stephencelis/vim-mml'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
+Plug 'tpope/vim-haml',          { 'for': 'haml' }
+Plug 'tpope/vim-markdown',      { 'for': 'markdown' }
+Plug 'tpope/vim-rails',         { 'for': 'ruby' }
+Plug 'stephencelis/vim-mml',    { 'for': 'mml' }
 
 " Utilities
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-tbone'
-Plugin 'ervandew/ag'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'benmills/vimux'
+Plug 'tpope/vim-bundler',       { 'on': 'Bundle' }
+Plug 'tpope/vim-dispatch',      { 'on': 'Dispatch' }
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim',            { 'on': 'Ag' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'kien/ctrlp.vim'
+Plug 'JazzCore/ctrlp-cmatcher'
+Plug 'benmills/vimux'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " Speed
 nnoremap ; :
