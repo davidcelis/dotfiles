@@ -17,11 +17,7 @@
 	reuse = commit -a --amend -C HEAD
 	st = status -s
 	news = log -p HEAD@{1}..HEAD@{0}
-	h = "!source ~/.githelpers && show_git_head"
-	l = "!source ~/.githelpers && pretty_git_log"
-	prune-merged = "!source ~/.githelpers && prune_merged"
-	accept = "!source ~/.githelpers && accept"
-	update = "!source ~/.githelpers && update"
+	h = head
 [color]
 	ui = auto
 [core]
@@ -45,9 +41,6 @@
 [rerere]
 	enabled = true
 	autoupdate = true
-[github]
-	user = davidcelis
-	password = "!echo | pass github.com"
 [filter "media"]
 	required = true
 	clean = git media clean %f

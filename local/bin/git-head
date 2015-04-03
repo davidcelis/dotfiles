@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "$(git l -1)
+$(git show --color -p --pretty="tformat:")" | less -FXRS

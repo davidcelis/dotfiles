@@ -9,7 +9,6 @@ symlinks = $(addprefix $(HOME)/.,\
              vim \
              gemrc \
              gitconfig \
-             githelpers \
              gitignore \
              pryrc \
              ruby-version \

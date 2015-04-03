@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [[ $(git remote -v | grep "upstream") == "" ]]; then
+  read -e -p "No upstream remote found. Please enter its URL: " upstream
+  git remote add upstream "$upstream"
+fi
+
+git fetch upstream && git rebase upstream/master

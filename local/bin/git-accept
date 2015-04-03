@@ -1,0 +1,4 @@
+#!/bin/sh
+
+repo=$(git remote -v | egrep "origin" | head -1 | egrep -o "[^:]+/[^.]+")
+hub merge https://github.com/$repo/pull/$1
