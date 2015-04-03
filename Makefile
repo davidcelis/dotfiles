@@ -68,7 +68,7 @@ $(macvim): $(homebrew)
 homebrew_fry = $(taps)/igas/homebrew-fry
 $(homebrew_fry):
 	brew tap igas/fry
-	@touch
+	@touch $(homebrew_fry)
 
 $(cellar)/fry: $(homebrew_fry)
 
