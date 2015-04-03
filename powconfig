@@ -1,1 +1,0 @@
-export PATH="$(fish -c 'fry current --path'):$PATH"

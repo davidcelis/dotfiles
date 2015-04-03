@@ -1,91 +1,83 @@
+homebrew_root = /usr/local
+cellar = $(homebrew_root)/Cellar
+taps = $(homebrew_root)/Library/Taps
 
-MAKEFLAGS += --check-symlink-times
-BIN = /usr/local/bin
-OS = $(shell uname -s)
+symlinks = $(addprefix $(HOME)/.,\
+             bundle \
+             config \
+             local \
+             vim \
+             gemrc \
+             gitconfig \
+             githelpers \
+             gitignore \
+             pryrc \
+             ruby-version \
+             tmux.conf \
+             vimrc \
+            )
+
+formulas = $(addprefix $(cellar)/,\
+             fish \
+             git \
+             docker \
+             boot2docker \
+             postgresql \
+             redis \
+             ruby-install \
+             the_silver_searcher \
+             wget \
+            )
+
+os = $(shell uname -s)
 
 update: install
-	git pull --rebase || (git stash && git pull --rebase && git stash pop)
-	# Updating vim-plug packages
+ifeq ($(os),Darwin)
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
-ifeq ($(OS),Darwin)
-	# Updating Homebrew, upgrading formulae, and cleaning up old versions
 	brew update
 	brew upgrade
 	brew cleanup
 endif
 
-
-ifeq ($(OS),Darwin)
-install: homebrew ruby symlinks
+ifeq ($(os),Darwin)
+install: brew ln
 else
-install: ruby symlinks
+install: ln
 endif
 
+brew: $(formulas) $(macvim)
 
-# Ruby
+ln: $(symlinks)
 
-RUBY = $(HOME)/.rubies/2.2.1/bin/ruby
+# brew
 
-$(RUBY):
-	cd $(HOME)/Downloads
-	git clone https://github.com/terlar/fry.git
-	cd fry
-	make install
-	mkdir -p $(HOME)/.rubies
-	ruby-install ruby 2.2.0 -i $(HOME)/.rubies/2.2.0
+homebrew = $(homebrew_root)/bin/brew
+$(homebrew):
+	@ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-ruby: $(RUBY)
+$(formulas): $(homebrew)
+	brew install $(notdir $@)
+	@touch $@
 
-# Dotfiles
+macvim = $(cellar)/macvim
+$(macvim): $(homebrew)
+	brew install macvim \
+		--override-system-vim \
+		--with-lua \
+	@touch $(macvim)
 
-DOTFILES = \
-	gemrc \
-	gitconfig \
-	githelpers \
-	gitignore \
-	irbrc \
-	pryrc \
-	powconfig \
-	screenrc \
-	tmux.conf \
-	vimrc \
-	bundle \
-	config \
-	local \
-	tmux \
-	vim
-SYMLINKS = $(addprefix $(HOME)/., $(DOTFILES))
-ifeq (($OS),Darwin)
-FLAGS = hfsv
-else
-FLAGS = fsv
-endif
-$(SYMLINKS):
-	# Symlinking all dotfiles and dotdirectories
-	@for dotfile in $(DOTFILES); \
-	do \
-		if test -d $$dotfile; \
-		then \
-			ln -F$(FLAGS) $(PWD)/$$dotfile/ $(HOME)/.$$dotfile; \
-		elif test -f $$dotfile; \
-		then \
-			ln -$(FLAGS) $(PWD)/$$dotfile $(HOME)/.$$dotfile; \
-		fi; \
-	done
+homebrew_fry = $(taps)/igas/homebrew-fry
+$(homebrew_fry):
+	brew tap igas/fry
+	@touch
 
-symlinks: $(SYMLINKS)
+$(cellar)/fry: $(homebrew_fry)
 
+# ln
 
-# Homebrew
+$(symlinks):
+	@ln -Fsv $(PWD)/$(patsubst .%,%,$(notdir $@)) $@
 
-BREW = $(BIN)/brew
-$(BREW):
-	# Installing Homebrew
-	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-	# Installing formulae from the Brewfile
-	brew bundle
-
-homebrew: $(BREW)
-
+# make
 
 .PHONY: update
