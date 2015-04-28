@@ -34,7 +34,7 @@ update: install
 ifeq ($(os),Darwin)
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 	brew update
-	brew upgrade
+	brew upgrade --all
 	brew cleanup
 endif
 
