@@ -31,8 +31,8 @@ formulas = $(addprefix $(cellar)/,\
 os = $(shell uname -s)
 
 update: install
-ifeq ($(os),Darwin)
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+ifeq ($(os),Darwin)
 	brew update
 	brew upgrade --all
 	brew cleanup
