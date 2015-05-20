@@ -91,13 +91,13 @@ set sidescrolloff=5
 set showcmd
 
 " Undo
-set undodir=~/.vim/_temp
+set undodir=~/.vim/tmp
 set undofile
 set undolevels=1000
 set undoreload=10000
 
-set backupdir=~/.vim/_temp
-set directory=~/.vim/_temp
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
 
 " git
 hi def link gitcommitOverflow WarningMsg

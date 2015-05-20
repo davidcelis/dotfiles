@@ -1,68 +1,103 @@
-homebrew_root = /usr/local
-cellar = $(homebrew_root)/Cellar
-taps = $(homebrew_root)/Library/Taps
+symlinks = \
+		   bundle \
+		   config \
+		   local \
+		   gemrc \
+		   gitconfig \
+		   gitignore \
+		   pryrc \
+		   ruby-version \
+		   vimrc \
 
-symlinks = $(addprefix $(HOME)/.,\
-             bundle \
-             config \
-             local \
-             gemrc \
-             gitconfig \
-             gitignore \
-             pryrc \
-             ruby-version \
-             tmux.conf \
-             vimrc \
-            )
-
-formulas = $(addprefix $(cellar)/,\
-             fish \
-             git \
-             docker \
-             boot2docker \
-             postgresql \
-             redis \
-             ruby-install \
-             the_silver_searcher \
-             wget \
-            )
+formulas = \
+		   boot2docker \
+		   docker \
+		   fish \
+		   fry \
+		   git \
+		   postgresql \
+		   redis \
+		   ruby-install \
+		   the_silver_searcher \
+		   trash \
+		   tree \
+		   wget \
 
 os = $(shell uname -s)
 
-update: install
-	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
-ifeq ($(os),Darwin)
+update: | install
 	brew update
 	brew upgrade --all
 	brew cleanup
-endif
+	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
 
-ifeq ($(os),Darwin)
-install: brew ln
-else
-install: ln
-endif
-
-brew: $(formulas) $(macvim)
-
-ln: $(symlinks)
+install: | brew vim_plug ln ruby
 
 # brew
 
+homebrew_root = /usr/local
+cellar = $(homebrew_root)/Cellar
+taps = $(homebrew_root)/Library/Taps
+caskroom = /opt/homebrew-cask/Caskroom
+
+ruby_version := $(shell cat $(PWD)/ruby-version)
+
+anybar = $(caskroom)/anybar
+macvim = $(cellar)/macvim
+
+prefixed_formulas = $(addprefix $(cellar)/,$(notdir $(formulas)))
+brew: | $(brew_cask) $(prefixed_formulas) $(anybar) $(macvim)
+
 homebrew = $(homebrew_root)/bin/brew
 $(homebrew):
-	@ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-$(formulas): $(homebrew)
+brew_cask = $(cellar)/brew-cask
+$(brew_cask): | $(homebrew)
+	brew install Caskroom/cask/brew-cask
+
+$(prefixed_formulas): | $(homebrew)
 	brew install $(notdir $@)
-	@touch $@
 
-macvim = $(cellar)/macvim
-$(macvim): $(homebrew)
+java = $(caskroom)/java
+$(java): $(brew_cask)
+	brew cask install java
+
+$(cellar)/elasticsearch: | $(java)
+
+$(anybar): | $(brew_cask)
+	brew cask install anybar
+
+$(macvim): | $(homebrew)
 	brew install macvim \
 		--override-system-vim \
 		--with-lua \
-	@touch $(macvim)
+
+homebrew_fry = $(taps)/igas/homebrew-fry
+$(homebrew_fry):
+	brew tap igas/fry
+
+fry = $(cellar)/fry
+$(fry): | $(homebrew_fry)
+
+# ln
+
+prefixed_symlinks = $(addprefix $(HOME)/.,$(symlinks))
+ln: | $(prefixed_symlinks)
+
+$(prefixed_symlinks):
+	@ln -Fsv $(PWD)/$(patsubst .%,%,$(notdir $@)) $@
+
+# ruby
+
+ruby = $(HOME)/.rubies/ruby-$(ruby_version)
+ruby: | $(ruby)
+
+$(ruby): | $(fry) $(HOME)/.ruby-version $(cellar)/ruby-install
+	ruby-install ruby $(ruby_version)
+	fry config auto on
+
+# vim
 
 vim_plug = $(HOME)/.vim/autoload/plug.vim
 vim_plug: | $(vim_plug)
@@ -70,19 +105,7 @@ vim_plug: | $(vim_plug)
 $(vim_plug):
 	curl -fLo $(vim_plug) --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	mkdir -p $(HOME)/.vim/_temp
-
-homebrew_fry = $(taps)/igas/homebrew-fry
-$(homebrew_fry):
-	brew tap igas/fry
-	@touch $(homebrew_fry)
-
-$(cellar)/fry: $(homebrew_fry)
-
-# ln
-
-$(symlinks):
-	@ln -Fsv $(PWD)/$(patsubst .%,%,$(notdir $@)) $@
+	mkdir -p $(HOME)/.vim/tmp
 
 # make
 

@@ -1,8 +1,6 @@
 ---
 BUNDLE_PATH: vendor/bundle
 BUNDLE_JOBS: '8'
-BUNDLE_BUILD__THRIFT: "--with-cppflags=-D_FORTIFY_SOURCE=0"
-BUNDLE_BUILD__LIBV8: "--with-system-v8"
 BUNDLE_GEM__COC: 1
 BUNDLE_GEM__MIT: 1
 BUNDLE_GEM__TEST: rspec
