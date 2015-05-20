@@ -30,11 +30,6 @@ if [ -z "$TMUX" ]
 
   # JRuby 2.0 mode
   set -x JRUBY_OPTS "--2.0 -Xcext.enabled=true"
-
-  # Docker
-  set -x DOCKER_HOST tcp://192.168.59.103:2376
-  set -x DOCKER_CERT_PATH /Users/david/.boot2docker/certs/boot2docker
-  set -x DOCKER_TLS_VERIFY 1
 end
 
 # Ruby
