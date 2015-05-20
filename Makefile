@@ -6,7 +6,6 @@ symlinks = $(addprefix $(HOME)/.,\
              bundle \
              config \
              local \
-             vim \
              gemrc \
              gitconfig \
              gitignore \
@@ -64,6 +63,14 @@ $(macvim): $(homebrew)
 		--override-system-vim \
 		--with-lua \
 	@touch $(macvim)
+
+vim_plug = $(HOME)/.vim/autoload/plug.vim
+vim_plug: | $(vim_plug)
+
+$(vim_plug):
+	curl -fLo $(vim_plug) --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	mkdir -p $(HOME)/.vim/_temp
 
 homebrew_fry = $(taps)/igas/homebrew-fry
 $(homebrew_fry):
