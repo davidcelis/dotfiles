@@ -25,13 +25,20 @@ formulas = \
 
 os = $(shell uname -s)
 
+default: | update clean
+
+install: | brew ln ruby vim_plug
+
 update: | install
 	brew update
 	brew upgrade --all
-	brew cleanup
-	vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+	gem update
+	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
-install: | brew vim_plug ln ruby
+clean: | install
+	brew cleanup
+	gem clean
+	vim +PlugClean +qall
 
 # brew
 
@@ -39,8 +46,6 @@ homebrew_root = /usr/local
 cellar = $(homebrew_root)/Cellar
 taps = $(homebrew_root)/Library/Taps
 caskroom = /opt/homebrew-cask/Caskroom
-
-ruby_version := $(shell cat $(PWD)/ruby-version)
 
 anybar = $(caskroom)/anybar
 macvim = $(cellar)/macvim
@@ -90,12 +95,26 @@ $(prefixed_symlinks):
 
 # ruby
 
+ruby_version := $(shell cat $(PWD)/ruby-version)
+
 ruby = $(HOME)/.rubies/ruby-$(ruby_version)
-ruby: | $(ruby)
+
+bundler = $(ruby)/bin/bundle
+cocoapods = $(ruby)/bin/pod
+
+ruby: | $(ruby) $(bundler) $(cocoapods)
 
 $(ruby): | $(fry) $(HOME)/.ruby-version $(cellar)/ruby-install
 	ruby-install ruby $(ruby_version)
 	fry config auto on
+
+gem = $(ruby)/bin/gem
+
+$(bundler): | $(ruby)
+	$(gem) install bundler
+
+$(cocoapods): | $(ruby)
+	$(gem) install cocoapods
 
 # vim
 
