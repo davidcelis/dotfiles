@@ -25,6 +25,7 @@ Plug 'stephencelis/vim-mml',    { 'for': 'mml' }
 
 " Utilities
 Plug 'tpope/vim-bundler',       { 'on': 'Bundle' }
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch',      { 'on': 'Dispatch' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
