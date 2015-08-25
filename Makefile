@@ -10,8 +10,6 @@ symlinks = \
 		   vimrc \
 
 formulas = \
-		   boot2docker \
-		   docker \
 		   fish \
 		   fry \
 		   git \
