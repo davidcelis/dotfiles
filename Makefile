@@ -5,6 +5,7 @@ symlinks = \
 		   gemrc \
 		   gitconfig \
 		   gitignore \
+			 git_templates \
 		   pryrc \
 		   ruby-version \
 		   vimrc \
@@ -100,7 +101,7 @@ ruby = $(HOME)/.rubies/ruby-$(ruby_version)
 bundler = $(ruby)/bin/bundle
 cocoapods = $(ruby)/bin/pod
 
-ruby: | $(ruby) $(bundler) $(cocoapods)
+ruby: | $(ruby) $(bundler) $(fit-commit)
 
 $(ruby): | $(fry) $(HOME)/.ruby-version $(cellar)/ruby-install
 	ruby-install ruby $(ruby_version)
@@ -111,8 +112,8 @@ gem = $(ruby)/bin/gem
 $(bundler): | $(ruby)
 	$(gem) install bundler
 
-$(cocoapods): | $(ruby)
-	$(gem) install cocoapods
+$(fit-commit): | $(ruby)
+	$(gem) install fit-commit
 
 # vim
 
