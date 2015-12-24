@@ -56,9 +56,9 @@ homebrew = $(homebrew_root)/bin/brew
 $(homebrew):
 	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew_cask = $(cellar)/brew-cask
-$(brew_cask): | $(homebrew)
-	brew install Caskroom/cask/brew-cask
+brew_cask = $(taps)/caskroom/homebrew-cask/
+$(brew_cask):
+	brew tap caskroom/cask
 
 $(prefixed_formulas): | $(homebrew)
 	brew install $(notdir $@)
