@@ -9,8 +9,7 @@ git branch --list --merged |
 
 # Prune all remote branches that have been merged into the specified remote's
 # master. Defaults to `origin`.
-git fetch $remote
-git remote prune $remote
+git fetch $remote --prune
 git branch --list --remote --merged $remote/master |
   grep --invert-match --extended-regexp 'HEAD|master' | grep $remote |
   sed "s/ *$remote\\///" |

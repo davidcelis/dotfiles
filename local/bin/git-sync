@@ -92,7 +92,7 @@ git branch --list | \
     if has_upstream_configuration "$local_branch"; then
       remote_branch="$(upstream_branch "$local_branch")" || gone=1
     elif [ ! -e "${GIT_DIR}/${remote_branch}" ]; then
-      remote_branch=""
+      remote_branch="" && gone=1
     fi
 
     if [ -n "$remote_branch" ]; then
