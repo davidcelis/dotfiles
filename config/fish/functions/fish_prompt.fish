@@ -17,7 +17,7 @@ function fish_prompt
     set_color $fish_color_error
   end
 
-  echo -n -s '% '
+  echo -n -s '$ '
 
   set_color normal
 end
