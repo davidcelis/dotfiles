@@ -74,7 +74,7 @@ $(anybar): | $(brew_cask)
 
 $(macvim): | $(homebrew)
 	brew install macvim \
-		--override-system-vim \
+		--with-override-system-vim \
 		--with-lua \
 
 homebrew_fry = $(taps)/igas/homebrew-fry
