@@ -57,3 +57,5 @@
 	required = true
 [init]
 	templatedir = ~/.git_templates
+[github]
+	user = davidcelis
