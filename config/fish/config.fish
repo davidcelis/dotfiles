@@ -10,8 +10,14 @@ set -x VISUAL $EDITOR
 set -x DEVELOPER $HOME/Developer
 
 # Ruby
-if test -f /usr/local/share/fry/fry.fish
-  source /usr/local/share/fry/fry.fish
+if test -d ~/.rbenv
+  # Ideally, this would be the following:
+  #
+  #   eval (rbenv init -)
+  #
+  # Unfortunately, this appears to be broken currently. More info:
+  # https://github.com/rbenv/rbenv/issues/869 
+  source (rbenv init - | psub)
 end
 
 # Aliases

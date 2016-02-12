@@ -12,11 +12,11 @@ symlinks = \
 
 formulas = \
 		   fish \
-		   fry \
 		   git \
 		   postgresql \
+		   rbenv \
 		   redis \
-		   ruby-install \
+		   ruby-build \
 		   the_silver_searcher \
 		   trash \
 		   tree \
@@ -77,13 +77,6 @@ $(macvim): | $(homebrew)
 		--with-override-system-vim \
 		--with-lua \
 
-homebrew_fry = $(taps)/igas/homebrew-fry
-$(homebrew_fry):
-	brew tap igas/fry
-
-fry = $(cellar)/fry
-$(fry): | $(homebrew_fry)
-
 # ln
 
 prefixed_symlinks = $(addprefix $(HOME)/.,$(symlinks))
@@ -96,16 +89,17 @@ $(prefixed_symlinks):
 
 ruby_version := $(shell cat $(PWD)/ruby-version)
 
-ruby = $(HOME)/.rubies/ruby-$(ruby_version)
+ruby = $(HOME)/.rbenv/versions/$(ruby_version)
 
 bundler = $(ruby)/bin/bundle
 cocoapods = $(ruby)/bin/pod
 
 ruby: | $(ruby) $(bundler) $(fit-commit)
 
-$(ruby): | $(fry) $(HOME)/.ruby-version $(cellar)/ruby-install
-	ruby-install ruby $(ruby_version)
-	fry config auto on
+$(ruby): | $(rbenv) $(HOME)/.ruby-version $(cellar)/ruby-install
+	rbenv install $(ruby_version)
+	rbenv global $(ruby_version)
+	rbenv rehash
 
 gem = $(ruby)/bin/gem
 
