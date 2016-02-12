@@ -11,8 +11,10 @@ symlinks = \
 		   vimrc \
 
 formulas = \
+		   cmake \
 		   fish \
 		   git \
+		   ninja \
 		   postgresql \
 		   rbenv \
 		   redis \
