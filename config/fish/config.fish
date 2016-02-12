@@ -11,13 +11,7 @@ set -x DEVELOPER $HOME/Developer
 
 # Ruby
 if test -d ~/.rbenv
-  # Ideally, this would be the following:
-  #
-  #   eval (rbenv init -)
-  #
-  # Unfortunately, this appears to be broken currently. More info:
-  # https://github.com/rbenv/rbenv/issues/869 
-  source (rbenv init - | psub)
+  status --is-interactive; and . (rbenv init - | psub)
 end
 
 # Aliases
