@@ -24,7 +24,9 @@
 #
 # To have this script run automatically throughout the day, copy that file into
 # ~/Library/LaunchAgents and edit values as necessary to be usable by your own
-# user.
+# user. Then, run:
+#
+#   launchctl load ~/Library/LaunchAgents/com.davidcelis.update-wallpaper.plist
 
 abort() { echo "!!! $*" >&2; exit 1; }
 log()   { echo "--> $*"; }
