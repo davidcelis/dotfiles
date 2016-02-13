@@ -74,10 +74,10 @@ STATUS=$(echo $SUN_DATA | jq --raw-output ".status")
 logk
 
 # Parse results using jq
-SUNRISE_START=$(echo $SUN_DATA | jq --raw-output ".results.astronomical_twilight_begin")
+SUNRISE_START=$(echo $SUN_DATA | jq --raw-output ".results.civil_twilight_begin")
 SUNRISE_END=$(echo $SUN_DATA | jq --raw-output ".results.sunrise")
 SUNSET_START=$(echo $SUN_DATA | jq --raw-output ".results.sunset")
-SUNSET_END=$(echo $SUN_DATA | jq --raw-output ".results.astronomical_twilight_end")
+SUNSET_END=$(echo $SUN_DATA | jq --raw-output ".results.civil_twilight_end")
 
 log "Sunrise starts at $SUNRISE_START and ends at $SUNRISE_END"
 log "Sunrset starts at $SUNSET_START and ends at $SUNSET_END"
