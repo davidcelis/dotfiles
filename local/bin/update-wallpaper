@@ -38,6 +38,7 @@ hash whereami 2>/dev/null || {
   logn "whereami is not installed."
   read -p "Install it? [Yn] " -r
   if [[ -z $REPLY || $REPLY =~ ^(Y|y|yes| )$ ]]; then
+    brew tap victor/whereami
     brew install whereami
   else
     abort "whereami not installed."
