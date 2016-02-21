@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
 " Theming
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'junegunn/goyo.vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bogado/file-line'
 Plug 'myusuf3/numbers.vim'
 Plug 'airblade/vim-gitgutter'
@@ -138,4 +139,4 @@ augroup END
 
 " Airline
 let g:airline_powerline_fonts=1
-let g:airline_theme='tomorrow'
+let g:airline_theme='base16'
