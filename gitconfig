@@ -1,6 +1,7 @@
 [user]
 	name = David Celis
 	email = me@davidcel.is
+	signingkey = 0CF782A5
 [help]
 	autocorrect = 20
 [alias]
