@@ -63,3 +63,5 @@
 [grep]
 	extendedRegexp = true
 	fullName = true
+[commit]
+	gpgsign = true
