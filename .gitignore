@@ -1,10 +1,13 @@
 atom/blob-store
 atom/packages
 
-config
-!config/fish/completions
-!config/fish/config.fish
-!config/fish/functions
+config/base16-shell
+config/configstore
+config/fish/fish_history
+config/fish/fishd.*
+config/fish/local.fish
+config/keybase
+config/hub
 
 local/share/fish/generated_completions
 !local/share/LaunchAgents
