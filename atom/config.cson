@@ -1,0 +1,33 @@
+"*":
+  "atom-beautify": {}
+  "autocomplete-elixir":
+    elixirPath: "/usr/local/bin/elixir"
+    erlangHome: "/usr/local/lib/erlang/bin/"
+  core:
+    excludeVcsIgnoredPaths: false
+    themes: [
+      "one-dark-ui"
+      "one-dark-syntax"
+    ]
+  editor:
+    fontFamily: "FiraCode-Light"
+    fontSize: 18
+    invisibles: {}
+  "exception-reporting":
+    userId: "f951f304-7607-ed69-34b1-50430d1496f5"
+  "file-icons":
+    coloured: false
+  "fuzzy-finder": {}
+  "git-plus": {}
+  "go-plus":
+    goPath: "/usr/local/share/go"
+  linter: {}
+  "linter-elixirc":
+    elixircPath: "/usr/local/bin/elixirc"
+    mixPath: "/usr/local/bin/mix"
+  "recent-files":
+    updated: false
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false

@@ -1,4 +1,5 @@
 symlinks = \
+		   atom \
 		   bundle \
 		   config \
 		   local \
@@ -34,11 +35,13 @@ update: | install
 	brew update
 	brew upgrade --all
 	gem update
+	apm upgrade
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 clean: | install
 	brew cleanup
 	gem clean
+	apm clean
 	vim +PlugClean +qall
 
 # brew
