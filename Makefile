@@ -35,7 +35,7 @@ update: | install
 	brew update
 	brew upgrade --all
 	gem update
-	apm upgrade
+	apm upgrade --no-confirm
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 clean: | install
