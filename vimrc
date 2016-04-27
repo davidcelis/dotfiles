@@ -1,8 +1,3 @@
-" Vundle
-if &shell =~# 'fish$'
-  set shell=/usr/local/bin/zsh
-endif
-
 set nocompatible
 set encoding=utf-8
 
