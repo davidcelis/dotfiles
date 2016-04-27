@@ -10,4 +10,4 @@ config/keybase
 config/hub
 
 local/share/fish/generated_completions
-!local/share/LaunchAgents
+local/share/keybase
