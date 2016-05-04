@@ -6,7 +6,6 @@ symlinks = \
 		   gemrc \
 		   gitconfig \
 		   gitignore \
-			 git_templates \
 		   pryrc \
 		   ruby-version \
 		   vimrc \
