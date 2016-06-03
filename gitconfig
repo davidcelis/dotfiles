@@ -5,20 +5,21 @@
 [help]
 	autocorrect = 20
 [alias]
+	amend = commit -a --amend
 	br = branch
 	ci = commit -s -v
 	co = checkout
 	di = diff
 	fa = fetch --all
 	ff = merge --ff-only
-	pullff = pull --ff-only
-	noff = merge --no-ff
+	h = head
 	ignore = update-index --assume-unchanged
-	amend = commit -a --amend
+	news = log -p HEAD@{1}..HEAD@{0}
+	noff = merge --no-ff
+	pullff = pull --ff-only
 	reuse = commit -a --amend -C HEAD
 	st = status -s
-	news = log -p HEAD@{1}..HEAD@{0}
-	h = head
+	touch = "!f() { touch $1 && git add $1; }; f"
 [color]
 	ui = auto
 [core]
