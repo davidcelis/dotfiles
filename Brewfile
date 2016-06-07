@@ -34,7 +34,7 @@ brew 'tree'
 brew 'wget'
 
 # Homebrew Cask
-cask_args appdir: '/Applications'
+cask_args appdir: "#{ENV['HOME']}/Applications"
 tap 'caskroom/cask'
 cask 'anybar'
 cask 'java' unless system '/usr/libexec/java_home --failfast'

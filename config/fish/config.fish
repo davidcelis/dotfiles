@@ -9,6 +9,9 @@ set -x VISUAL $EDITOR
 # Set the Code directory
 set -x DEVELOPER $HOME/Developer
 
+# Homebrew and brew-cask options
+set -x HOMEBREW_CASK_OPTS "--appdir=~/Applications"
+
 # Ruby
 if test -d ~/.rbenv
   status --is-interactive; and . (rbenv init - | psub)
