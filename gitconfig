@@ -64,3 +64,5 @@
 	fullName = true
 [commit]
 	gpgsign = true
+[interactive]
+	diffFilter = diff-highlight
