@@ -12,4 +12,5 @@ config/keybase
 config/hub
 
 local/share/fish/generated_completions
+local/share/fish/fish_history
 local/share/keybase
