@@ -8,9 +8,11 @@ config/configstore
 config/fish/fish_history
 config/fish/fishd.*
 config/fish/local.fish
-config/keybase
+config/heroku
 config/hub
+config/keybase
 
 local/share/fish/generated_completions
 local/share/fish/fish_history
+local/share/heroku
 local/share/keybase
