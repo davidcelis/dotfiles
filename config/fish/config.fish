@@ -21,6 +21,10 @@ end
 alias ag "ag --smart-case"
 alias rm "trash"
 
+if test -x (which hub)
+  eval (hub alias -s fish)
+end
+
 if test -x (which exa)
   alias ls "exa"
 end
