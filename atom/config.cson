@@ -26,6 +26,7 @@
   "recent-files":
     updated: false
   "tree-view":
-    hideIgnoredNames: true
+    hideIgnoredNames: false
+    hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
