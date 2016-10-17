@@ -5,6 +5,7 @@
     erlangHome: "/usr/local/lib/erlang/bin/"
   core:
     excludeVcsIgnoredPaths: false
+    telemetryConsent: "limited"
   editor:
     fontFamily: "FiraCode-Light"
     fontSize: 18
