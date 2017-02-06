@@ -20,7 +20,9 @@
   "file-icons":
     coloured: false
   "fuzzy-finder": {}
-  "git-plus": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "7166f9aa-c565-4854-ae51-7f6e672459f0"
   "go-plus":
     goPath: "/usr/local/share/go"
   linter: {}

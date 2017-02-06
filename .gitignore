@@ -1,5 +1,6 @@
 atom/blob-store
 atom/packages
+atom/recovery
 
 bundle/cache
 
