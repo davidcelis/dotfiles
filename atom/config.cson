@@ -35,6 +35,6 @@
     updated: false
   "tree-view":
     hideIgnoredNames: false
-    hideVcsIgnoredFiles: false
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
