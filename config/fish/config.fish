@@ -17,6 +17,9 @@ if test -d ~/.rbenv
   status --is-interactive; and . (rbenv init - | psub)
 end
 
+# jq
+set -x JQ_COLORS "1;31:0;33:0;35:0;39:0;32:1;39:1;39"
+
 # Aliases
 alias ag "ag --smart-case"
 alias rm "trash"
