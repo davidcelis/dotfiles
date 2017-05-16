@@ -29,8 +29,7 @@
   "linter-elixirc":
     elixircPath: "/usr/local/bin/elixirc"
     mixPath: "/usr/local/bin/mix"
-  "one-dark-ui":
-    layoutMode: "Spacious"
+  "one-dark-ui": {}
   "recent-files":
     updated: false
   "tree-view":
