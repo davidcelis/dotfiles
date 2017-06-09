@@ -1,7 +1,8 @@
 ---
-BUNDLE_PATH: vendor/bundle
-BUNDLE_JOBS: '8'
-BUNDLE_GEM__COC: '1'
-BUNDLE_GEM__MIT: '1'
-BUNDLE_GEM__TEST: rspec
-BUNDLE_IGNORE_MESSAGES: 'true'
+BUNDLE_PATH: "vendor/bundle"
+BUNDLE_JOBS: "8"
+BUNDLE_GEM__COC: "1"
+BUNDLE_GEM__MIT: "1"
+BUNDLE_GEM__TEST: "rspec"
+BUNDLE_IGNORE_MESSAGES: "true"
+BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2"
