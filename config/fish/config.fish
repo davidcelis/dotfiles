@@ -13,6 +13,7 @@ set -x DEVELOPER $HOME/Developer
 set -x HOMEBREW_CASK_OPTS "--appdir=~/Applications"
 
 # Ruby
+set -x PATH $HOME/.rbenv/bin $PATH
 if test -d ~/.rbenv
   status --is-interactive; and . (rbenv init - | psub)
 end

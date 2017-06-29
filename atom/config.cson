@@ -31,11 +31,12 @@
   "linter-elixirc":
     elixircPath: "/usr/local/bin/elixirc"
     mixPath: "/usr/local/bin/mix"
+  "linter-ui-default":
+    panelHeight: 69
   "one-dark-ui": {}
   "recent-files":
     updated: false
   "tree-view":
     hideIgnoredNames: false
-    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
