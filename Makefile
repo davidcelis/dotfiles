@@ -8,6 +8,8 @@ symlinks = \
 		   gitignore \
 		   pryrc \
 		   ruby-version \
+			 tmux \
+			 tmux.conf \
 		   vimrc \
 
 default: | update clean
