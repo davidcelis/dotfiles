@@ -1,5 +1,5 @@
 # No greeting, please
-set -e fish_greeting
+set fish_greeting ""
 
 # Universal
 set -x PATH $HOME/.local/bin $PATH
