@@ -3,6 +3,7 @@
   "autocomplete-elixir":
     elixirPath: "/usr/local/bin/elixir"
     erlangHome: "/usr/local/lib/erlang/bin/"
+  "autocomplete-paths": {}
   "autocomplete-plus":
     fileBlacklist: [
       "*.md"
