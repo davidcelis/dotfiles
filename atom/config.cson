@@ -1,5 +1,8 @@
 "*":
   "atom-beautify": {}
+  "atom-ide-ui":
+    hyperclick:
+      darwinTriggerKeys: "shiftKey,metaKey"
   "autocomplete-elixir":
     elixirPath: "/usr/local/bin/elixir"
     erlangHome: "/usr/local/lib/erlang/bin/"
@@ -10,6 +13,9 @@
       "*.txt"
     ]
   core:
+    disabledPackages: [
+      "linter"
+    ]
     excludeVcsIgnoredPaths: false
     telemetryConsent: "limited"
   editor:
