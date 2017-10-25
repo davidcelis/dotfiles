@@ -18,6 +18,11 @@
     ]
     excludeVcsIgnoredPaths: false
     telemetryConsent: "limited"
+    themes: [
+      "one-dark-ui"
+      "ariake-dark-syntax"
+    ]
+    titleBar: "custom"
   editor:
     fontFamily: "FiraCode-Light"
     fontSize: 18
@@ -40,6 +45,7 @@
     mixPath: "/usr/local/bin/mix"
   "linter-ui-default":
     panelHeight: 69
+  "no-title-bar": {}
   "one-dark-ui": {}
   "recent-files":
     updated: false
