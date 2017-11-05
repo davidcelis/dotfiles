@@ -56,7 +56,7 @@ ruby = $(HOME)/.rbenv/versions/$(ruby_version)
 bundler = $(ruby)/bin/bundle
 cocoapods = $(ruby)/bin/pod
 
-ruby: | $(ruby) $(bundler) $(fit-commit)
+ruby: | $(ruby) $(bundler)
 
 $(ruby): | $(brew) $(HOME)/.ruby-version
 	rbenv install $(ruby_version)
@@ -67,9 +67,6 @@ gem = $(ruby)/bin/gem
 
 $(bundler): | $(ruby)
 	$(gem) install bundler
-
-$(fit-commit): | $(ruby)
-	$(gem) install fit-commit
 
 # vim
 
