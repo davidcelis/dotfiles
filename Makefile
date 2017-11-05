@@ -1,16 +1,16 @@
 symlinks = \
-		   atom \
-		   bundle \
-		   config \
-		   local \
-		   gemrc \
-		   gitconfig \
-		   gitignore \
-		   pryrc \
-		   ruby-version \
-			 tmux \
-			 tmux.conf \
-		   vimrc \
+	atom \
+	bundle \
+	config \
+	local \
+	gemrc \
+	gitconfig \
+	gitignore \
+	pryrc \
+	ruby-version \
+	tmux \
+	tmux.conf \
+	vimrc \
 
 default: | update clean
 
