@@ -13,6 +13,7 @@ config/heroku
 config/hub
 config/keybase
 config/StardewValley
+config/yarn
 
 local/share/fish/generated_completions
 local/share/fish/fish_history
