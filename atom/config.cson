@@ -17,6 +17,7 @@
       "linter"
     ]
     excludeVcsIgnoredPaths: false
+    projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
