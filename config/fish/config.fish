@@ -13,10 +13,7 @@ set -x DEVELOPER $HOME/Developer
 set -x HOMEBREW_CASK_OPTS "--appdir=~/Applications"
 
 # Ruby
-set -x PATH $HOME/.rbenv/bin $PATH
-if test -d ~/.rbenv
-  status --is-interactive; and . (rbenv init - | psub)
-end
+status --is-interactive; and source (rbenv init -|psub)
 
 # jq
 set -x JQ_COLORS "1;31:0;33:0;35:0;39:0;32:1;39:1;39"
