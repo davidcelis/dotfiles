@@ -51,7 +51,8 @@ $(prefixed_symlinks):
 
 ruby_version := $(shell cat $(PWD)/ruby-version)
 
-ruby = $(HOME)/.rbenv/versions/$(ruby_version)
+ruby_versions = $(HOME)/.rbenv/versions
+ruby = $(ruby_versions)/$(ruby_version)
 
 bundler = $(ruby)/bin/bundle
 cocoapods = $(ruby)/bin/pod
@@ -59,7 +60,7 @@ cocoapods = $(ruby)/bin/pod
 ruby: | $(ruby) $(bundler)
 
 $(ruby): | $(brew) $(HOME)/.ruby-version
-	rbenv install $(ruby_version)
+	ruby-install ruby-$(ruby_version) -i $(ruby_versions)/$(ruby_version)
 	rbenv global $(ruby_version)
 	rbenv rehash
 
