@@ -19,3 +19,10 @@ local/share/fish/generated_completions
 local/share/fish/fish_history
 local/share/heroku
 local/share/keybase
+
+# Ignore fisherman
+config/fish/completions/fisher.fish
+config/fish/conf.d
+config/fish/functions/fisher.fish
+config/fish/fishfile
+config/fisherman
