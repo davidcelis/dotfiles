@@ -1,0 +1,13 @@
+#!/bin/sh
+
+command=${1:-show}
+
+git l \
+  | fzf \
+    --ansi \
+    --multi \
+    --header "git $command" \
+    --preview \
+      "git show {1} --color" \
+    --reverse \
+  | xargs git $command
