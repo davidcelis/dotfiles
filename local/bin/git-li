@@ -10,4 +10,5 @@ git l \
     --preview \
       "git show {1} --color" \
     --reverse \
+  | awk '{gsub(/.*\//, ""); print $1}' \
   | xargs git $command
