@@ -15,8 +15,9 @@
   core:
     disabledPackages: [
       "linter"
+      "autocomplete-paths"
+      "pigments"
     ]
-    excludeVcsIgnoredPaths: false
     projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "limited"
     themes: [
