@@ -49,8 +49,43 @@
     panelHeight: 69
   "no-title-bar": {}
   "one-dark-ui": {}
+  "platformio-ide-terminal":
+    ansiColors:
+      normal:
+        black: "#27292c"
+        blue: "#93b2ca"
+        cyan: "#9ac9c4"
+        green: "#c2c77b"
+        magenta: "#c0a7c7"
+        red: "#d77c79"
+        white: "#d0d2d1"
+        yellow: "#f4cf87"
+      zBright:
+        brightBlack: "#a7a8a7"
+        brightBlue: "#93b2ca"
+        brightCyan: "#9ac9c4"
+        brightGreen: "#c2c77b"
+        brightMagenta: "#c0a7c7"
+        brightRed: "#d77c79"
+        brightYellow: "#f4cf87"
+    iconColors:
+      blue: "#93b2ca"
+      cyan: "#9ac9c4"
+      green: "#c2c77b"
+      magenta: "#c0a7c7"
+      orange: "#fba16d"
+      pink: "#cd99c1"
+      purple: "#b188c9"
+      red: "#d77c79"
+      yellow: "#f4cf87"
+    style:
+      fontFamily: "FiraCode-Light"
+      fontSize: "18"
   "recent-files":
     updated: false
+  "terminal-plus":
+    core: {}
+    style: {}
   "tree-view":
     hideIgnoredNames: false
   welcome:
