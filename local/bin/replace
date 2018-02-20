@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# USAGE: replace MATCHER REPLACEMENT GLOBS
+#
+#   replace username name *.rb
+
+find . -name $3 | xargs perl -pi -e "s/$1/$2/g"
