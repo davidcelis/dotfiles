@@ -12,6 +12,7 @@ config/fish/local.fish
 config/heroku
 config/hub
 config/keybase
+config/mudlet
 config/StardewValley
 config/yarn
 
