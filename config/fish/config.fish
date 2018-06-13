@@ -22,11 +22,11 @@ set -x JQ_COLORS "1;31:0;33:0;35:0;39:0;32:1;39:1;39"
 alias ag "ag --smart-case"
 alias rm "trash"
 
-if test -x (which hub)
+if type -q "hub"
   eval (hub alias -s fish)
 end
 
-if test -x (which exa)
+if type -q "exa"
   alias ls "exa"
 end
 
