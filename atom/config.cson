@@ -20,7 +20,7 @@
       "pigments"
     ]
     projectHome: "/Users/davidcelis/Developer"
-    telemetryConsent: "limited"
+    telemetryConsent: "no"
     themes: [
       "one-dark-ui"
       "ariake-dark-syntax"
@@ -42,6 +42,8 @@
     gitDiagnostics: true
   "go-plus":
     goPath: "/usr/local/share/go"
+    test:
+      runTestsOnSave: false
   linter: {}
   "linter-elixirc":
     elixircPath: "/usr/local/bin/elixirc"
