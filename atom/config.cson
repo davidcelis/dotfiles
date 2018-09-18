@@ -22,14 +22,15 @@
     projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
-      "ariake-dark-syntax"
+      "one-light-ui"
+      "ariake-light-syntax"
     ]
     titleBar: "custom"
   editor:
     fontFamily: "FiraCode-Light"
     fontSize: 18
     invisibles: {}
+    preferredLineLength: 120
   "exception-reporting":
     userId: "f951f304-7607-ed69-34b1-50430d1496f5"
   "file-icons":
