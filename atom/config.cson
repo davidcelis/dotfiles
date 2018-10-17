@@ -22,8 +22,8 @@
     projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "no"
     themes: [
-      "one-light-ui"
-      "ariake-light-syntax"
+      "one-dark-ui"
+      "ariake-dark-syntax"
     ]
     titleBar: "custom"
   editor:
@@ -50,7 +50,7 @@
     elixircPath: "/usr/local/bin/elixirc"
     mixPath: "/usr/local/bin/mix"
   "linter-ui-default":
-    panelHeight: 69
+    panelHeight: 183
   "no-title-bar": {}
   "one-dark-ui": {}
   "platformio-ide-terminal":
