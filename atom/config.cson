@@ -50,7 +50,7 @@
     elixircPath: "/usr/local/bin/elixirc"
     mixPath: "/usr/local/bin/mix"
   "linter-ui-default":
-    panelHeight: 183
+    panelHeight: 125
   "no-title-bar": {}
   "one-dark-ui": {}
   "platformio-ide-terminal":
@@ -85,6 +85,7 @@
     style:
       fontFamily: "FiraCode-Light"
       fontSize: "18"
+      theme: "one-dark"
   "recent-files":
     updated: false
   "terminal-plus":
