@@ -1,6 +1,8 @@
 "*":
   "atom-beautify": {}
   "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
     hyperclick:
       darwinTriggerKeys: "shiftKey,metaKey"
     use: {}
@@ -50,7 +52,7 @@
     elixircPath: "/usr/local/bin/elixirc"
     mixPath: "/usr/local/bin/mix"
   "linter-ui-default":
-    panelHeight: 125
+    panelHeight: 300
   "no-title-bar": {}
   "one-dark-ui": {}
   "platformio-ide-terminal":
