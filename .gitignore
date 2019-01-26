@@ -4,10 +4,12 @@ atom/recovery
 
 bundle/cache
 
+config/autostart
 config/base16-shell
 config/configstore
 config/fish/fish_history
 config/fish/fishd.*
+config/fish/fish_variables
 config/fish/local.fish
 config/heroku
 config/hub
