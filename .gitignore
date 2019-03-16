@@ -8,6 +8,7 @@ config/.mono
 config/autostart
 config/base16-shell
 config/configstore
+config/doctl
 config/fish/fish_history
 config/fish/fishd.*
 config/fish/fish_variables
