@@ -4,6 +4,7 @@ atom/recovery
 
 bundle/cache
 
+config/.mono
 config/autostart
 config/base16-shell
 config/configstore
