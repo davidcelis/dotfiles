@@ -4,7 +4,7 @@ set encoding=utf-8
 call plug#begin('~/.vim/plugged')
 
 " Theming
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'davidcelis/vim-ariake-dark'
 Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -18,6 +18,7 @@ Plug 'tpope/vim-haml',          { 'for': 'haml' }
 Plug 'tpope/vim-markdown',      { 'for': 'markdown' }
 Plug 'tpope/vim-rails',         { 'for': 'ruby' }
 Plug 'stephencelis/vim-mml',    { 'for': 'mml' }
+Plug 'hashicorp/sentinel.vim',  { 'for': 'sentinel' }
 
 " Utilities
 Plug 'tpope/vim-bundler',       { 'on': 'Bundle' }
@@ -39,7 +40,7 @@ nnoremap ; :
 
 " Theme/Colors
 syntax on
-colorscheme Tomorrow-Night
+colorscheme Ariake-Dark
 set background=dark
 set cursorline
 set nowrap
