@@ -22,6 +22,7 @@ config/yarn
 
 local/share/fish/generated_completions
 local/share/fish/fish_history
+local/share/fish/fish_read_history
 local/share/heroku
 local/share/keybase
 
