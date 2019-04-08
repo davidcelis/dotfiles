@@ -24,8 +24,8 @@ After=docker.service
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/docker kill tomato
 ExecStartPre=-/usr/bin/docker rm tomato
-ExecStartPre=/usr/bin/docker pull davidcelis/tomato:5806771
-ExecStart=/usr/bin/docker run -h tomato -e TZ=America/Los_Angeles --net=host --rm -v /var/run/docker.sock:/var/run/docker.sock -v /mnt/Developer:/root/Developer -v /mnt/secrets:/root/secrets --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --privileged --name tomato davidcelis/tomato:5806771
+ExecStartPre=/usr/bin/docker pull davidcelis/tomato:latest
+ExecStart=/usr/bin/docker run -h tomato -e TZ=America/Los_Angeles --net=host --rm -v /var/run/docker.sock:/var/run/docker.sock -v /mnt/Developer:/root/Developer -v /mnt/secrets:/root/secrets --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --privileged --name tomato davidcelis/tomato:latest
 [Install]
 WantedBy=multi-user.target
 EOF
