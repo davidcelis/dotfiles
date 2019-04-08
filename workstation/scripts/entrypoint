@@ -5,6 +5,7 @@ set -e
 if [ ! -d ~/Developer/dotfiles ]; then
   echo "Cloning dotfiles..."
 
+  mkdir -p ~/Developer
   cd ~/Developer
   git clone https://github.com/davidcelis/dotfiles.git
 fi
