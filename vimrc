@@ -40,7 +40,7 @@ nnoremap ; :
 
 " Theme/Colors
 syntax on
-colorscheme Ariake-Dark
+silent! colorscheme Ariake-Dark
 set background=dark
 set cursorline
 set nowrap

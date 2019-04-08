@@ -17,6 +17,6 @@ make ln
 
 # Install Vim plugins
 make vim_plug
-vim +PlugInstall +qall
+vim +'PlugInstall --sync' +qa
 
 /usr/sbin/sshd -D
