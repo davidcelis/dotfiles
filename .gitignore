@@ -35,3 +35,4 @@ config/fisherman
 
 # Ignore sensitive Terracorm files
 workstation/terraform.tfstate*
+workstation/.terraform
