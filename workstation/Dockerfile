@@ -1,7 +1,7 @@
 # Install 1password
 FROM ubuntu:18.10 as onepassword_builder
 RUN apt-get update && apt-get install -y curl ca-certificates unzip
-RUN curl -sS -o 1password.zip https://cache.agilebits.com/dist/1P/op/pkg/v0.5.5/op_linux_amd64_v0.5.5.zip && unzip 1password.zip op -d /usr/bin && rm 1password.zip
+RUN curl -sS -o 1password.zip https://cache.agilebits.com/dist/1P/op/pkg/v0.5.5/op_linux_amd64_v0.5.5.zip && unzip 1password.zip op -d /usr/local/bin && rm 1password.zip
 
 # Install doctl
 FROM ubuntu:18.10 as doctl_builder
@@ -81,6 +81,9 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 
 # For correct colors in tmux
 ENV TERM screen-256color
+
+# 1p
+COPY --from=onepassword_builder /usr/local/bin/op /usr/local/bin/
 
 # doctl tools
 COPY --from=doctl_builder /usr/local/bin/doctl /usr/local/bin/
