@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+if [ ! -d ~/Developer/dotfiles ]; then
+  echo "Cloning dotfiles..."
+
+  cd ~/Developer
+  git clone https://github.com/davidcelis/dotfiles.git
+fi
+
+cd ~/Developer/dotfiles
+git remote set-url origin git@github.com:davidcelis/dotfiles.git
+
+# Symlink dotfiles
+make ln
+
+# Install Vim plugins
+make vim_plug
+vim +PlugInstall +qall
+
+/usr/sbin/sshd -D

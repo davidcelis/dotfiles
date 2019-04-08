@@ -32,3 +32,6 @@ config/fish/conf.d
 config/fish/functions/fisher.fish
 config/fish/fishfile
 config/fisherman
+
+# Ignore sensitive Terracorm files
+workstation/terraform.tfstate*
