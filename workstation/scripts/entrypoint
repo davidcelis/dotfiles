@@ -20,4 +20,12 @@ make ln
 make vim_plug
 vim +'PlugInstall --sync' +qa
 
+# Add SSH config
+cat > ~/.ssh/config <<EOF
+Host *
+  ForwardAgent yes
+  IdentityFile /root/.ssh/id_ed25519
+  AddKeysToAgent yes
+EOF
+
 /usr/sbin/sshd -D
