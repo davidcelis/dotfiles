@@ -2,7 +2,7 @@ provider "digitalocean" {}
 
 resource "digitalocean_droplet" "tomato" {
   ssh_keys           = [24195986]
-  image              = "ubuntu-18-10-x64"
+  image              = "ubuntu-19-04-x64"
   region             = "sfo2"
   size               = "s-4vcpu-8gb"
   private_networking = true
