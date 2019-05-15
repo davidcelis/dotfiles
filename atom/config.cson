@@ -45,6 +45,8 @@
     gitDiagnostics: true
   "go-plus":
     goPath: "/usr/local/share/go"
+    panel:
+      displayMode: "closed"
     test:
       runTestsOnSave: false
   linter: {}
