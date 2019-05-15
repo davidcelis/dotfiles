@@ -1,20 +1,25 @@
 # Install 1password
-FROM ubuntu:18.10 as onepassword_builder
+FROM ubuntu:19.04 as onepassword_builder
 RUN apt-get update && apt-get install -y curl ca-certificates unzip
 RUN curl -sS -o 1password.zip https://cache.agilebits.com/dist/1P/op/pkg/v0.5.5/op_linux_amd64_v0.5.5.zip && unzip 1password.zip op -d /usr/local/bin && rm 1password.zip
 
 # Install doctl
-FROM ubuntu:18.10 as doctl_builder
+FROM ubuntu:19.04 as doctl_builder
 RUN apt-get update && apt-get install -y wget ca-certificates
 RUN wget https://github.com/digitalocean/doctl/releases/download/v1.14.0/doctl-1.14.0-linux-amd64.tar.gz && tar xf doctl-1.14.0-linux-amd64.tar.gz && chmod +x doctl && mv doctl /usr/local/bin && rm doctl-1.14.0-linux-amd64.tar.gz
 
 # Install terraform
-FROM ubuntu:18.10 as terraform_builder
+FROM ubuntu:19.04 as terraform_builder
 RUN apt-get update && apt-get install -y wget ca-certificates unzip
 RUN wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && unzip terraform_0.11.13_linux_amd64.zip && chmod +x terraform && mv terraform /usr/local/bin && rm terraform_0.11.13_linux_amd64.zip
 
+# Install rust
+FROM ubuntu:19.04 as rust_builder
+RUN apt-get update && apt-get install -y curl ca-certificates
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
 # base OS
-FROM ubuntu:18.10
+FROM ubuntu:19.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
@@ -90,6 +95,10 @@ COPY --from=doctl_builder /usr/local/bin/doctl /usr/local/bin/
 
 # Terraform tools
 COPY --from=terraform_builder /usr/local/bin/terraform /usr/local/bin/
+
+# Rust tools
+COPY --from=rust_builder /root/.cargo ~/.cargo
+RUN cargo install exa
 
 # Authorize my SSH keys
 RUN mkdir ~/.ssh && curl -fsL https://github.com/davidcelis.keys > ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
