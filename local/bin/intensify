@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# Generate a `:something_intensifies:` Slack emoji, given a reasonable image
+# input. I recommend grabbing an emoji from https://emojipedia.org/
+set -euo pipefail
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 input.png [output.png]"
+  exit 1
+fi
+
+# Grab the input file and move into its directory
+input=$1
+cd "$(dirname "$input")"
+filename=$(basename -- "$input")
+
+# Number of shaking frames
+count=10
+
+# The maximum number of pixels to shift while shaking
+delta=4
+
+# Add 10% padding to the width and height
+width=$(identify -format "%w" "$filename")
+height=$(identify -format "%h" "$filename")
+new_width=$(( width + width / 10 ))
+new_height=$(( height + height / 10 ))
+extended="${filename%.*}-extended.png"
+
+# Re-scale the image to 128x128
+convert \
+  -gravity center \
+  -background none \
+  -extent ${new_width}x${new_height} \
+  -geometry 128x128 \
+  "$filename" \
+  "$extended"
+
+# Generate some shaking frames
+frame="${filename%.*}-frame"
+n=0
+
+while [ "$n" -lt "$count" ]; do
+  # Generate some random shake
+  x=$((RANDOM % (delta * 2) - delta))
+  y=$((RANDOM % (delta * 2) - delta))
+
+  # Ensure coordinates are of the form +3 or -4
+  [ "$x" -ge 0 ] && x="+$x"
+  [ "$y" -ge 0 ] && y="+$y"
+
+  # Shake the image!
+  convert "$extended" -page "${x}${y}" -background none -flatten "$frame"-"$n".gif
+  n=$((n + 1))
+done
+
+# Combine the frames into an infinitely looping GIF
+gif=${2:-"${filename%.*}_intensifies.gif"}
+convert -loop 0 -background none -dispose Background -delay 1x30 "${frame}"-*.gif "$gif"
+
+# Clean up
+rm "$extended" "${frame}"-*.gif
+
+# We did it y'all
+echo "Created $gif. Enjoy!"
