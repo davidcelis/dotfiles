@@ -37,7 +37,9 @@
     userId: "f951f304-7607-ed69-34b1-50430d1496f5"
   "file-icons":
     coloured: false
-  "fuzzy-finder": {}
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
   "git-plus":
     general:
       _analyticsUserId: "7166f9aa-c565-4854-ae51-7f6e672459f0"
