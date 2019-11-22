@@ -17,7 +17,6 @@ default: | update clean
 install: | brew ln ruby vim_plug
 
 update: | install
-	brew update
 	brew upgrade
 	gem update
 	apm upgrade --no-confirm
