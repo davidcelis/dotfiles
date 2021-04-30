@@ -75,7 +75,9 @@ upstream_branch() {
 }
 
 is_ancestor() {
-  git merge-base --is-ancestor "$@"
+  git merge-base --is-ancestor "$@" || (
+    merge_base=$(git merge-base "$@") && [[ $(git cherry $2 $(git commit-tree $(git rev-parse $1^{tree}) -p $merge_base -m _)) == "-"* ]]
+  )
 }
 
 git fetch "$ORIGIN" --prune --quiet --progress
