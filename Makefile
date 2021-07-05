@@ -1,4 +1,5 @@
 symlinks = \
+	asdfrc \
 	atom \
 	bundle \
 	config \
@@ -21,7 +22,6 @@ update: | install
 	gem update
 	apm upgrade --no-confirm
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
-	mas upgrade
 
 clean: | install
 	brew cleanup
@@ -50,11 +50,10 @@ $(prefixed_symlinks):
 
 ruby_version := $(shell cat $(PWD)/ruby-version)
 
-ruby_versions = $(HOME)/.rbenv/versions
+ruby_versions = $(HOME)/.asdf/installs/ruby
 ruby = $(ruby_versions)/$(ruby_version)
 
 bundler = $(ruby)/bin/bundle
-cocoapods = $(ruby)/bin/pod
 
 ruby: | $(ruby) $(bundler)
 

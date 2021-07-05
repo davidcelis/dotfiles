@@ -27,6 +27,7 @@ local/share/fish/fish_read_history
 local/share/heroku
 local/share/keybase
 local/share/nvim/shada
+local/share/pry/
 
 # Ignore fisherman
 config/fish/completions/fisher.fish

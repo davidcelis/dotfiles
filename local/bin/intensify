@@ -55,7 +55,7 @@ while [ "$n" -lt "$count" ]; do
 done
 
 # Combine the frames into an infinitely looping GIF
-gif=${2:-"${filename%.*}_intensifies.gif"}
+gif=${2:-"${filename%.*}-intensifies.gif"}
 convert -loop 0 -background none -dispose Background -delay 1x30 "${frame}"-*.gif "$gif"
 
 # Clean up
