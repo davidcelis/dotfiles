@@ -67,3 +67,5 @@
 	gpgsign = true
 [interactive]
 	diffFilter = diff-highlight
+[url "git@github.com:"]
+	insteadOf = https://github.com/
