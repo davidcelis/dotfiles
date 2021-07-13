@@ -1,0 +1,31 @@
+#!/bin/bash
+
+asdf_path="$PWD"
+asdf_info=
+
+# Make sure asdf is currently active.
+if [ "$ASDF_DIR" ]; then
+
+  # Traverse up directories until we hit an asdf directory or filesystem root.
+  while [ -z "$asdf_info" -o $asdf_path != '' ]; do
+    if [ -f "$asdf_path/.tool-versions" ]; then
+      asdf_path="$asdf_path/.tool-versions"
+      break
+    elif [ -f "$asdf_path/.ruby-version" ]; then
+      asdf_path="$asdf_path/.ruby-version"
+      break
+    else
+      asdf_path="${asdf_path%/*}"
+    fi
+  done
+
+  # Use array manipulations and IFS to replace newlines with '/'.
+  if [ -f "$asdf_path" ]; then
+    IFS=$'\n'
+    asdf_info=($(<"$asdf_path"))
+    IFS='/'
+    asdf_info="${asdf_info[*]}"
+  fi
+fi
+
+echo $asdf_info
