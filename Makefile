@@ -1,5 +1,4 @@
 symlinks = \
-	asdfrc \
 	atom \
 	bundle \
 	config \
@@ -8,9 +7,9 @@ symlinks = \
 	gitconfig \
 	gitignore \
 	pryrc \
-	ruby-version \
 	tmux \
 	tmux.conf \
+	tool-versions \
 	vimrc \
 
 default: | update clean
