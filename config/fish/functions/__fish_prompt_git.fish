@@ -1,5 +1,5 @@
 function __fish_prompt_git
-  set -g __git_branch_name (command git symbolic-ref --short -q HEAD ^/dev/null)
+  set -g __git_branch_name (command git symbolic-ref --short -q HEAD 2>/dev/null)
 
   if not set -q -g __git_functions_defined
     set -g __git_functions_defined
@@ -9,11 +9,11 @@ function __fish_prompt_git
     end
 
     function _git_ahead
-      echo (command git log --format=oneline origin/$__git_branch_name..$__git_branch_name ^/dev/null)
+      echo (command git log --format=oneline origin/$__git_branch_name..$__git_branch_name)
     end
 
     function _git_behind
-      echo (command git log --format=oneline $__git_branch_name..origin/$__git_branch_name ^/dev/null)
+      echo (command git log --format=oneline $__git_branch_name..origin/$__git_branch_name)
     end
   end
 

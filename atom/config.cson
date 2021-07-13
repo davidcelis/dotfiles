@@ -20,6 +20,8 @@
       "autocomplete-paths"
       "pigments"
       "linter"
+      "linter-ui-default"
+      "linter-rust"
     ]
     projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "no"
