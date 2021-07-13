@@ -3,6 +3,8 @@ atom/blob-store
 atom/packages
 atom/recovery
 
+Brewfile.lock.json
+
 bundle/cache
 
 config/.mono
@@ -24,6 +26,7 @@ config/yarn
 local/share/fish/generated_completions
 local/share/fish/fish_history
 local/share/fish/fish_read_history
+local/share/gem
 local/share/heroku
 local/share/keybase
 local/share/nvim/shada

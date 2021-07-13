@@ -58,9 +58,8 @@ bundler = $(ruby)/bin/bundle
 ruby: | $(ruby) $(bundler)
 
 $(ruby): | $(brew) $(HOME)/.ruby-version
-	ruby-install ruby-$(ruby_version) -i $(ruby_versions)/$(ruby_version)
-	rbenv global $(ruby_version)
-	rbenv rehash
+	asdf plugin add ruby
+	asdf install ruby $(ruby_version)
 
 gem = $(ruby)/bin/gem
 

@@ -17,9 +17,9 @@
     ]
   core:
     disabledPackages: [
-      "linter"
       "autocomplete-paths"
       "pigments"
+      "linter"
     ]
     projectHome: "/Users/davidcelis/Developer"
     telemetryConsent: "no"
