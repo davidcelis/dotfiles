@@ -1,8 +1,5 @@
-#!/bin/zsh
-#
-# Usage: fast-asdf-version [tool]
-#
-# For example, `fast-asdf-version ruby` or `fast-asdf-version nodejs`.
+#!/usr/bin/env zsh
+
 tool="$1"
 
 if [ -z "$tool" ]; then
@@ -10,47 +7,55 @@ if [ -z "$tool" ]; then
   exit 1
 fi
 
-declare -A legacy_version_files
-legacy_version_files=(
-  [crystal]=".crystal-version"
-  [elixir]=".exenv-version"
-  [ruby]=".ruby-version"
-  [nodejs]=".node-version"
-)
+# Make sure ASDF is active.
+[[ -z "$ASDF_DIR" ]] && exit 0
 
-asdf_version_file=
+legacy_version_files__crystal=( .crystal-version )
+legacy_version_files__elixir=( .exenv-version )
+legacy_version_files__ruby=( Gemfile .ruby-version )
+legacy_version_files__nodejs=( .node-version )
+
 asdf_version=
 
-# Make sure ASDF is active.
-if [ "$ASDF_DIR" ]; then
-  # Traverse up directories until we find a .tool-versions file, legacy file,
-  # or hit the filesystem root.
-  while [[ -z "$asdf_version_file" ]]; do
-    if [[ -f "$PWD/.tool-versions" ]]; then
-      asdf_version_file="$PWD/.tool-versions"
-    elif [[ -f "$PWD/$legacy_version_files[$tool]" ]]; then
-      asdf_version_file="$PWD/$legacy_version_files[$tool]"
-    elif [[ "$PWD" == "/" ]]; then
-      # If we hit the filesystem root and there was no version file there,
-      # check the user's home directory as a last-ditch effort
-      if [[ -f "$HOME/.tool-versions" ]]; then
-        asdf_version_file="$HOME/.tool-versions"
-      elif [[ -f "$HOME/$legacy_version_files[$tool]" ]]; then
-        asdf_version_file="$HOME/$legacy_version_files[$tool]"
-      fi
+# If we're not in the home directory or a home subdirectory, we should default
+# to whatever the user's defaults are
+if [[ ! $PWD =~ $HOME ]]; then
+  if [[ -f "$HOME/.tool-versions" ]]; then
+    asdf_version=$(cat $HOME/.tool-versions | awk -v tool=$tool '$1 == tool { print $2 }')
+    echo $asdf_version
+    exit 0
+  fi
 
+  # Otherwise, check for any of the legacy version files we've defined for the tool
+  for file in $(eval echo \$legacy_version_files__$tool); do
+    if [[ -f "$HOME/$file" ]]; then
+      asdf_version=$($HOME/.asdf/plugins/$tool/bin/parse-legacy-file $HOME/$file)
       break
     fi
-
-    cd ..
   done
 
-  # Finally, parse whichever version file we found
-  if [[ "$asdf_version_file" == *.tool-versions ]]; then
-    asdf_version=$(cat "$asdf_version_file" | awk -v tool=$tool '$1 == tool { print $2 }')
-  else
-    asdf_version=$(cat $asdf_version_file)
-  fi
+  echo $asdf_version
+  exit 0
 fi
+
+# Traverse up directories until we find a .tool-versions file, legacy file,
+# or hit the $HOME directory.
+while [[ $PWD =~ $HOME ]]; do
+  # If we've found a .tool-versions file, parse it and break.
+  if [[ -f "$PWD/.tool-versions" ]]; then
+    asdf_version=$(cat $PWD/.tool-versions | awk -v tool=$tool '$1 == tool { print $2 }')
+    break
+  fi
+
+  # Otherwise, check for any of the legacy version files we've defined for the tool
+  for file in $(eval echo \$legacy_version_files__$tool); do
+    if [[ -f "$PWD/$file" ]]; then
+      asdf_version=$($HOME/.asdf/plugins/$tool/bin/parse-legacy-file $PWD/$file)
+      break 2
+    fi
+  done
+
+  cd ..
+done
 
 echo $asdf_version

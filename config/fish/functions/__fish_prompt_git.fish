@@ -9,11 +9,11 @@ function __fish_prompt_git
     end
 
     function _git_ahead
-      echo (command git log --format=oneline origin/$__git_branch_name..$__git_branch_name)
+      echo (command git log --format=oneline origin/$__git_branch_name..$__git_branch_name 2>/dev/null)
     end
 
     function _git_behind
-      echo (command git log --format=oneline $__git_branch_name..origin/$__git_branch_name)
+      echo (command git log --format=oneline $__git_branch_name..origin/$__git_branch_name 2>/dev/null)
     end
   end
 
