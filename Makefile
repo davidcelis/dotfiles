@@ -1,5 +1,4 @@
 symlinks = \
-	atom \
 	bundle \
 	config \
 	local \
