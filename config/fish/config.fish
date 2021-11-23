@@ -10,11 +10,12 @@ set -x VISUAL $EDITOR
 set -x DEVELOPER $HOME/Developer
 
 # Homebrew and brew-cask options
+fish_add_path /opt/homebrew/bin
 set -x HOMEBREW_CASK_OPTS "--appdir=~/Applications"
 
 # Source functions for asdf, a multi-purpose version manager
-if test -f /usr/local/opt/asdf/asdf.fish
-  source /usr/local/opt/asdf/asdf.fish
+if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source /opt/homebrew/opt/asdf/libexec/asdf.fish
 end
 
 # Source sensitive configuration

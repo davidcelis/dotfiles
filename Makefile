@@ -18,13 +18,11 @@ install: | brew ln ruby vim_plug
 update: | install
 	brew upgrade
 	gem update
-	apm upgrade --no-confirm
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 clean: | install
 	brew cleanup
 	gem clean
-	apm clean
 	vim +PlugClean +qall
 
 # brew
@@ -46,7 +44,7 @@ $(prefixed_symlinks):
 
 # ruby
 
-ruby_version := $(shell cat $(PWD)/ruby-version)
+ruby_version := $(shell cat $(PWD)/tool-versions | awk -v tool=ruby '$$1 == tool { print $$2 }')
 
 ruby_versions = $(HOME)/.asdf/installs/ruby
 ruby = $(ruby_versions)/$(ruby_version)
@@ -55,7 +53,7 @@ bundler = $(ruby)/bin/bundle
 
 ruby: | $(ruby) $(bundler)
 
-$(ruby): | $(brew) $(HOME)/.ruby-version
+$(ruby): | $(brew) $(HOME)/.tool-versions
 	asdf plugin add ruby
 	asdf install ruby $(ruby_version)
 
