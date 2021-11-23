@@ -128,7 +128,7 @@ git branch --list | \
         git branch -D "$local_branch" >/dev/null
         echo "${RED}Deleted branch ${LIGHT_RED}${local_branch}${RESET} (was ${local_sha:0:7})."
       else
-        echo "warning: \`$local_branch' was deleted on $ORIGIN, but appears not merged into $MASTER" >&2
+        echo "warning: \`$local_branch' is neither present on $ORIGIN nor merged into $MASTER. Have you pushed it yet?" >&2
       fi
     fi
   done
