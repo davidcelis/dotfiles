@@ -1,7 +1,7 @@
 [user]
 	name = David Celis
 	email = me@davidcel.is
-	signingkey = 2B0016D7
+	signingkey = 2663060C
 [help]
 	autocorrect = 20
 [alias]
@@ -24,6 +24,7 @@
 	ui = auto
 [core]
 	excludesfile = ~/.gitignore
+  fsmonitor = true
 	precomposeunicode = false
 [credential]
 	helper = osxkeychain
@@ -53,11 +54,6 @@
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
 [github]
 	user = davidcelis
 [grep]
@@ -71,3 +67,8 @@
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
