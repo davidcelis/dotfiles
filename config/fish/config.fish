@@ -5,6 +5,7 @@ set fish_greeting ""
 set -x PATH $HOME/.local/bin $PATH
 set -x EDITOR vim
 set -x VISUAL $EDITOR
+set -gx GPG_TTY (tty)
 
 # Set the Code directory
 set -x DEVELOPER $HOME/Developer

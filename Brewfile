@@ -12,21 +12,22 @@
 #                  '._( ) .'
 #                      ( (
 #                       `-.
-brew 'fish'
+brew "fish"
 
 # Ruby
-brew 'asdf'
+brew "asdf"
 
 # Databases
-brew 'postgresql', restart_service: :changed
-brew 'redis', restart_service: :changed
+brew "redis", restart_service: :changed
 
 # Utilities
-brew 'cmake'
-brew 'git'
-brew 'ninja'
-brew 'openssl'
-brew 'ripgrep'
-brew 'trash'
-brew 'tree'
-brew 'wget'
+brew "cmake"
+brew "eza"
+brew "git"
+brew "just"
+brew "ninja"
+brew "openssl"
+brew "ripgrep"
+brew "trash"
+brew "tree"
+brew "wget"

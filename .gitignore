@@ -2,32 +2,22 @@ Brewfile.lock.json
 
 bundle/cache
 
-config/.mono
-config/autostart
-config/base16-shell
 config/configstore
-config/doctl
 config/fish/fish_history
 config/fish/fishd.*
 config/fish/fish_variables
 config/fish/local.fish
 config/gcloud
-config/heroku
-config/hub
-config/keybase
-config/mudlet
-config/StardewValley
-config/yarn
+config/github-copilot
+config/karabiner/assets
+config/karabiner/automatic_backups
+config/op
+config/raycast
 
-local/share/fish/generated_completions
-local/share/fish/fish_history
-local/share/fish/fish_read_history
+local/share/fish
 local/share/gem
-local/share/heroku
+local/share/gh
 local/share/karabiner
-local/share/keybase
-local/share/nvim/shada
-local/share/pry/
 local/state
 
 # Ignore fisherman

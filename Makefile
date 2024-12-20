@@ -5,15 +5,12 @@ symlinks = \
 	gemrc \
 	gitconfig \
 	gitignore \
-	pryrc \
-	tmux \
-	tmux.conf \
 	tool-versions \
 	vimrc \
 
 default: | update clean
 
-install: | brew ln ruby vim_plug
+install: | brew brew_bundle ln ruby vim_plug
 
 update: | install
 	brew upgrade
@@ -27,12 +24,16 @@ clean: | install
 
 # brew
 
-brew: | $(homebrew)
+brew: | $(homebrew) $(brew_bundle)
 
 homebrew_root = /usr/local
 homebrew = $(homebrew_root)/bin/brew
 $(homebrew):
-	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew_bundle = $(PWD)/Brewfile.lock.json
+$(brew_bundle): | $(homebrew)
+	brew bundle check --file=$(PWD)/Brewfile || brew bundle --file=$(PWD)/Brewfile
 
 # ln
 
