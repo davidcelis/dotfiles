@@ -22,10 +22,12 @@ brew "redis", restart_service: :changed
 
 # Utilities
 brew "cmake"
+brew "dokku"
 brew "eza"
+brew "gh"
 brew "git"
 brew "just"
-brew "ninja"
+brew "jq"
 brew "openssl"
 brew "ripgrep"
 brew "trash"
