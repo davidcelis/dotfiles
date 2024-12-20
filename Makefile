@@ -15,6 +15,7 @@ install: | brew brew_bundle ln ruby vim_plug
 update: | install
 	brew upgrade
 	gem update
+	fisher update
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
 clean: | install
@@ -72,6 +73,13 @@ $(vim_plug):
 	curl -fLo $(vim_plug) --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	mkdir -p $(HOME)/.vim/tmp
+
+# fisher
+fisher = $(HOME)/.config/fish/functions/fisher.fish
+fisher: | $(fisher)
+
+$(fisher):
+	@curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 # make
 
