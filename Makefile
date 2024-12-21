@@ -79,7 +79,7 @@ fisher = $(HOME)/.config/fish/functions/fisher.fish
 fisher: | $(fisher)
 
 $(fisher):
-	@curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+	@/opt/homebrew/bin/fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 # make
 
