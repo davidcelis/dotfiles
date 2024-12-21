@@ -30,7 +30,6 @@ Plug 'rking/ag.vim',            { 'on': 'Ag' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 Plug 'JazzCore/ctrlp-cmatcher'
-Plug 'benmills/vimux'
 
 call plug#end()
 
