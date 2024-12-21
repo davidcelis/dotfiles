@@ -10,7 +10,7 @@ symlinks = \
 
 default: | update clean
 
-install: | brew brew_bundle ln ruby vim_plug
+install: | ln brew ruby vim_plug fisher
 
 update: | install
 	brew upgrade
@@ -25,16 +25,13 @@ clean: | install
 
 # brew
 
-brew: | $(homebrew) $(brew_bundle)
+brew: | $(homebrew)
 
-homebrew_root = /usr/local
+homebrew_root = /opt/homebrew
 homebrew = $(homebrew_root)/bin/brew
 $(homebrew):
 	@/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-brew_bundle = $(PWD)/Brewfile.lock.json
-$(brew_bundle): | $(homebrew)
-	brew bundle check --file=$(PWD)/Brewfile || brew bundle --file=$(PWD)/Brewfile
+	/opt/homebrew/bin/brew bundle --file=$(PWD)/Brewfile
 
 # ln
 
