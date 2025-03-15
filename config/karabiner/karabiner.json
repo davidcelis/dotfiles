@@ -41,7 +41,17 @@
                         "is_keyboard": true,
                         "product_id": 20548,
                         "vendor_id": 12815
-                    }
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        }
+                    ]
                 }
             ],
             "name": "Default profile",

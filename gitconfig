@@ -1,9 +1,3 @@
-[user]
-	name = David Celis
-	email = me@davidcel.is
-	signingkey = 2663060C
-[help]
-	autocorrect = 20
 [alias]
 	amend = commit -a --amend
 	br = branch
@@ -20,6 +14,8 @@
 	reuse = commit -a --amend -C HEAD
 	st = status -s
 	touch = "!f() { touch $1 && git add $1; }; f"
+[commit]
+	gpgsign = true
 [color]
 	ui = auto
 [core]
@@ -30,6 +26,32 @@
 	helper = osxkeychain
 [diff]
 	renames = copies
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[github]
+	user = davidcelis
+[gpg]
+	format = ssh
+[grep]
+	extendedRegexp = true
+	fullName = true
+[help]
+	autocorrect = 20
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = diff-highlight
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
@@ -44,31 +66,9 @@
 [rerere]
 	enabled = true
 	autoupdate = true
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[ghi]
-	token = !security find-internet-password -a davidcelis -s github.com -l 'ghi token' -w
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[github]
-	user = davidcelis
-[grep]
-	extendedRegexp = true
-	fullName = true
-[commit]
-	gpgsign = true
-[interactive]
-	diffFilter = diff-highlight
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[init]
-	defaultBranch = main
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[user]
+	name = David Celis
+	email = me@davidcel.is
+	signingkey = ~/.ssh/id_ed25519.pub

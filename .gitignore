@@ -3,6 +3,7 @@ Brewfile.lock.json
 bundle/cache
 
 config/configstore
+config/fish/completions
 config/fish/fish_history
 config/fish/fishd.*
 config/fish/fish_variables
@@ -20,11 +21,9 @@ local/share/gh
 local/share/karabiner
 local/state
 
-# Ignore fisherman
-config/fish/completions/fisher.fish
+# Ignore fisherman plugins
 config/fish/conf.d
 config/fish/functions/fisher.fish
-config/fish/fishfile
 config/fisherman
 
 # Ignore sensitive Terracorm files
