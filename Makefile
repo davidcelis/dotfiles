@@ -15,6 +15,7 @@ install: | ln brew ruby vim_plug fisher
 update: | install
 	brew upgrade
 	brew bundle check || brew bundle
+	asdf plugin update --all
 	gem update
 	fish -c "fisher update"
 	vim +PlugUpgrade +PlugInstall +PlugUpdate +qall
