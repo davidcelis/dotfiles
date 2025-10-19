@@ -1,9 +1,0 @@
-#!/bin/bash
-
-IP=`curl -s http://icanhazip.com/`
-
-curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$RECORD_ID" \
-    -H "X-Auth-Email: $EMAIL" \
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d "{\"type\":\"A\",\"name\":\"mbp.davidcel.is\",\"content\":\"$IP\",\"ttl\":120}"

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-MOSH_VERSION=$(ls /usr/local/Cellar/mobile-shell | tail -1)
-
-/usr/libexec/ApplicationFirewall/socketfilterfw --add /usr/local/Cellar/mobile-shell/$MOSH_VERSION/bin/mosh-server
-/usr/libexec/ApplicationFirewall/socketfilterfw --unblockapp /usr/local/Cellar/mobile-shell/$MOSH_VERSION/bin/mosh-server

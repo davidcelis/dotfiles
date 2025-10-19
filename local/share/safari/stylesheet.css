@@ -1,7 +1,0 @@
-/* Github */
-
-pre, code, samp, table.js-file-line-container td, table.diff-table span {
-  font-family: "Fira Code","SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace !important;
-  font-feature-settings: "calt" 1;
-  font-variant-ligatures: contextual;
-}
