@@ -21,6 +21,7 @@ brew "asdf"
 brew "redis", restart_service: :changed
 
 # Utilities
+tap "dokku/repo"
 brew "cmake"
 brew "dokku"
 brew "eza"

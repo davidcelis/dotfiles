@@ -49,7 +49,7 @@ asdf_ruby_plugin = $(HOME)/.asdf/plugins/ruby
 asdf_ruby_plugin: | $(asdf_ruby_plugin)
 
 $(asdf_ruby_plugin): | $(brew)
-	asdf plugin add ruby
+	asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 
 ruby_version := $(shell cat $(PWD)/tool-versions | awk -v tool=ruby '$$1 == tool { print $$2 }')
 
