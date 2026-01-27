@@ -1,4 +1,24 @@
 function fish_title
-  set -l pwd (echo -n $PWD | sed 's/ /%20/g')
-  printf '\a\033]7;file://localhost/%s' $pwd
+  # If we're connected via ssh, we print the hostname.
+  set -l ssh
+  set -q SSH_TTY
+  and set ssh "["(prompt_hostname | string sub -l 10 | string collect)"]"
+
+  # An override for the current command is passed as the first parameter.
+  # This is used by `fg` to show the true process name, among others.
+  if set -q argv[1]
+      echo -- $ssh (__fish_prompt_pwd) - (string sub -l 20 -- $argv[1])
+  else
+    # Don't print "fish" because it's redundant
+    set -l command (status current-command)
+    if test "$command" = fish
+      set command
+    end
+
+    if [ -n "$command" ]
+      echo -- $ssh (__fish_prompt_pwd) - (string sub -l 20 -- $command)
+    else
+      echo -- $ssh (__fish_prompt_pwd)
+    end
+  end
 end
