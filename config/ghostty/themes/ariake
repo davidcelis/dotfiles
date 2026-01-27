@@ -1,0 +1,38 @@
+# Ariake Dark colors
+background = #2a2d37
+foreground = #b9bed5
+selection-background = #5f6786
+selection-foreground = cell-foreground
+cursor-color = #c4c5c8
+
+# black
+palette = 0=#2a2d37
+palette = 8=#2a2d37
+
+# red
+palette = 1=#85b1e0
+palette = 9=#4d8acb
+
+# green
+palette = 2=#9aefea
+palette = 10=#9aefea
+
+# yellow
+palette = 3=#dda2f6
+palette = 11=#a571f4
+
+# blue
+palette = 4=#f5faff
+palette = 12=#f5faff
+
+# magenta
+palette = 5=#7e7edd
+palette = 13=#7e7edd
+
+# cyan
+palette = 6=#93ddfb
+palette = 14=#93ddfb
+
+# white
+palette = 7=#9aefea
+palette = 15=#b9bed5

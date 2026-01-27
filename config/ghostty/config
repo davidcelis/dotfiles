@@ -1,0 +1,14 @@
+theme = "ariake"
+font-family = "Fira Code"
+font-size = 18
+font-style-bold = false
+font-style-italic = false
+font-style-bold-italic = false
+font-synthetic-style = false
+font-thicken = false
+cursor-style = "block"
+
+title = ""
+maximize = true
+shell-integration-features = "title,no-cursor"
+macos-titlebar-proxy-icon = "visible"
