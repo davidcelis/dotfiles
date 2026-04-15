@@ -14,9 +14,10 @@ set -x DEVELOPER $HOME/Developer
 fish_add_path /opt/homebrew/bin
 set -x HOMEBREW_CASK_OPTS "--appdir=~/Applications"
 
-# Source functions for asdf, a multi-purpose version manager
-if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
-  source /opt/homebrew/opt/asdf/libexec/asdf.fish
+# Source functions for rv, a fast ruby version manager
+if type -q rv
+  rv shell init fish | source
+  rv shell completions fish | source
 end
 
 # Source sensitive configuration

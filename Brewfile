@@ -15,7 +15,7 @@
 brew "fish"
 
 # Ruby
-brew "asdf"
+brew "rv"
 
 # Databases
 brew "redis", restart_service: :changed

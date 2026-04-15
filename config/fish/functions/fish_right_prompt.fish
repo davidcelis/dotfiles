@@ -3,10 +3,10 @@ function fish_right_prompt
   set -l normal (set_color normal)
   set -l error (set_color $fish_color_error)
 
-  if contains asdf (functions)
-    set -l ruby_version (fast-asdf-version ruby)
+  if type -q rv
+    set -l ruby_version (rv ruby pin | awk '{print $NF}')
 
-    if asdf where ruby &> /dev/null
+    if rv ruby find $ruby_version &> /dev/null
       echo $red$ruby_version$normal
     else
       echo $error$ruby_version$normal

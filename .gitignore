@@ -19,6 +19,7 @@ local/share/fish
 local/share/gem
 local/share/gh
 local/share/karabiner
+local/share/rv/rubies
 local/state
 
 # Ignore fisherman plugins
