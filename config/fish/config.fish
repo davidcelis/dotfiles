@@ -24,3 +24,7 @@ end
 if test -f $HOME/.config/fish/local.fish
   source $HOME/.config/fish/local.fish
 end
+
+if test -f "$HOME/.config/fish/themes/Rosé Pine Moon.theme"
+  fish_config theme choose "Rosé Pine Moon"
+end

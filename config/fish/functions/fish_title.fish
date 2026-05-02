@@ -7,7 +7,7 @@ function fish_title
   # An override for the current command is passed as the first parameter.
   # This is used by `fg` to show the true process name, among others.
   if set -q argv[1]
-      echo -- $ssh (__fish_prompt_pwd) - (string sub -l 20 -- $argv[1])
+    echo -- $ssh (__fish_prompt_pwd) - (string sub -l 20 -- $argv[1])
   else
     # Don't print "fish" because it's redundant
     set -l command (status current-command)

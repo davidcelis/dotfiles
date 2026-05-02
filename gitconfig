@@ -52,6 +52,7 @@
 	autocorrect = 20
 [init]
 	defaultBranch = main
+	templateDir = /Users/davidcelis/.git-template
 [interactive]
 	diffFilter = diff-highlight
 [merge]

@@ -17,16 +17,13 @@ function __fish_prompt_git
     end
   end
 
-  set -l cyan   (set_color -o cyan)
-  set -l yellow (set_color -o yellow)
-  set -l purple (set_color -o purple)
-  set -l blue   (set_color -o blue)
-  set -l normal (set_color normal)
-
-  set -l cwd $cyan(prompt_pwd)
+  set -l green   (set_color -o green)
+  set -l yellow  (set_color -o yellow)
+  set -l blue    (set_color -o blue)
+  set -l normal  (set_color normal)
 
   if [ $__git_branch_name ]
-    set -l git_branch $purple$__git_branch_name
+    set -l git_branch $green$__git_branch_name
     set git_info "$blue $git_branch"
 
     if [ (_git_dirty) ]
